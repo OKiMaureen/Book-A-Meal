@@ -261,7 +261,7 @@ footer p{
 }
 
 /* signup form */
-.signup{
+.signin-up{
     min-height:100vh;
     background:url(images/background1.jpg)center/cover fixed no-repeat;
     display:flex;
