@@ -202,3 +202,51 @@ nav{
     
 
 
+
+ /* contactsection */
+ .contact{
+    min-height: 80vh;
+    background:linear-gradient(rgba(102, 241, 67, 0.5),rgba(102, 241, 67, 0.5)), url(images/contact-img.jpg)center/cover fixed no-repeat;
+    display:flex;
+    align-items:center;
+}
+.contact-heading h2{
+    color:#A7095C;
+    font-size: 40px;
+    text-align: center;
+    margin-top:30px;  
+}
+.contact-article{
+    color:#A7095C;
+    margin:70px;
+    display:inline;
+    text-align: center;
+}
+.contact-icon{
+    align-self: center;
+    font-size: 50px;
+    margin-right: 20px;
+    padding: 25px;
+    
+}
+.contact-text h3{
+   text-transform: uppercase;
+   color:#A7095C;
+}
+.contact-text p{
+   line-height:2;
+   margin-top:5px;
+}
+
+@media screen and (min-width:550px){
+   .contact-center{
+       width:100%;
+   }
+}
+@media screen and (min-width:750px){
+   .contact-center{
+       width:100%;
+   }
+}
+
+
