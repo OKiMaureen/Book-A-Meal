@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Gugi', sans-serif, cursive;
+}
+nav ul{
+    list-style-type: none;
+    display:none;
+}
+nav ul a{
+    display:block;
+    background:rgb(74, 119, 47,0.5);
+    padding:20px;
+    font-size: 15px;
+    text-decoration:none;
+    text-transform:uppercase;
+    color:#FA9E05;
+    transition: color 2s ease, background 2s ease, padding 2s ease;
+}
+nav ul a:hover{
+    background: #474747;
+    color:#e0e0ce;
+    padding-left:30px;
+}
+
+.nav-container img{
+    width:50px;
+    align-self: center;
+}
+.logo{
+    color:transparent;
+    align-self: center;
+}
+.nav-container{ 
+    padding:0 20px;
+    background: #ffffff;
+    border-bottom:4px solid #FA9E05;
+    display:flex;
+    justify-content:space-between;
+ }
+.bar{
+    width:20px;
+    height: 3px;
+    margin:8px;
+    background: #A7095C;
+}
+.btn {
+    padding:20px;
+    display:inline-block;
+    border:1px solid #A7095C;
+    align-self: center;
+    margin: 5px 0 5px 0;
+    height: 30px;
+}
+header {
+    min-height: 100vh;
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/header-img.jpg)center/cover fixed no-repeat;
+    display:flex;
+    flex-direction: column;
+}
+nav{
+    flex:0 0auto;
+}
+.banner{
+  flex: 1 0 auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center  
+}
+.banner h1{
+    margin-top:30px; 
+    color:#ffffff;
+    font-size: 60px;
+}
+.banner h2{
+    font-size:50px;
+    text-transform: uppercase;
+    color:#A7095C;
+}
+.banner h3{
+    font-size: 20px;
+    color:#ffffff;
+}
+.meal{
+    color: #ffffff;
+    font-size: 55px;
+}
+.button{
+    background-color:#A7095C;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 50px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.banner-icons{
+    padding:20px;
+
+}
+.banner-icons a{
+    display: inline b lock;
+    font-size:20px;
+    padding:10px 15px;
+    margin: 0 10px;
+    border-radius: 50%;
+    color:#A7095C;
+    transition:color 1s ease, transform 1s ease;
+}
+.banner-icons a:hover{
+    color:#4A772F;
+    transform:translateY(-10px);
+}
+nav{
+    position:fixed;
+    width:100%;
+    z-index:10;
+}
+
+/* big screen*/
+@media screen and (min-width:750px){
+
+    .nav-container{
+        display:none;
+    }
+    nav ul {
+        display:  flex!important;
+        flex-wrap:wrap;
+        justify-content:center;
+        background:rgba(249, 250, 249);
+        
+    }
+    .logo{
+        color:#4A772F;
+        align-self: center;
+    }
+    
+    nav ul a{
+        background: transparent;
+    }
+     nav ul a:hover{
+         background:transparent;
+         padding-left:20px;  
+     }
+}
