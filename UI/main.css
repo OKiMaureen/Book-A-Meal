@@ -389,7 +389,12 @@ input::placeholder{
     text-align: center;
     height: 40%;
     align-self: center;
-    
+}
+.view{
+    font-size:8px;
+    font-style: italic;
+    padding:5px;
+    cursor: pointer;
 }
 
 
