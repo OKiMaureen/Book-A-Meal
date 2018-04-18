@@ -395,6 +395,8 @@ input::placeholder{
     font-style: italic;
     padding:5px;
     cursor: pointer;
+    color: #e0e0ce;
+    text-decoration: none;
 }
 
 
