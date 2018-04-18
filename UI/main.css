@@ -108,7 +108,7 @@ nav{
 
 }
 .banner-icons a{
-    display: inline b lock;
+    display: inline block;
     font-size:20px;
     padding:10px 15px;
     margin: 0 10px;
@@ -247,6 +247,17 @@ nav{
    .contact-center{
        width:100%;
    }
+}
+
+/* footer */
+footer{
+    background: black;
+    padding: 30px;
+    text-align: center;
+}
+footer p{
+    color:#FA9E05;
+    font-size:20px;
 }
 
 
