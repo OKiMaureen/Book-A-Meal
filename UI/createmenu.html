@@ -41,7 +41,7 @@
             <a href="order.html">Orders</a>
           </li>
           <li>
-              <a href="#" onclick="">Sign Out</a>
+            <a href="#" onclick="">Sign Out</a>
           </li>
         </ul>
 
@@ -50,11 +50,13 @@
     </header>
     <!-- Header End-->
 
-    <!--  Add Menu  -->
+    <!--  Create Menu  -->
     <section class="meal">
+
       <article class="card">
-        <form>
-          <h6>category</h6>
+        <form action="/action_page.php">
+          <h3>Set Menu</h3>
+          <input type="date" name="bday" placeholder="select date">
           <select>
             <option value="category">Category</option>
             <option value="swallow">Swallow</option>
@@ -62,40 +64,17 @@
             <option value="drink">Drink</option>
           </select>
           <select>
-            <option value="category">Category</option>
-            <option value="swallow">Swallow</option>
-            <option value="soup">Soup</option>
-            <option value="drink">Drink</option>
+            <option value="meal">Meal</option>
+            <option value="swallow">Eba</option>
+            <option value="soup">Amala</option>
+            <option value="drink">Semo</option>
           </select>
-          <select>
-            <option value="category">Category</option>
-            <option value="swallow">Swallow</option>
-            <option value="soup">Soup</option>
-            <option value="drink">Drink</option>
-          </select>
-          <select>
-            <option value="category">Category</option>
-            <option value="swallow">Swallow</option>
-            <option value="soup">Soup</option>
-            <option value="drink">Drink</option>
-          </select>
-          <select>
-            <option value="category">Category</option>
-            <option value="swallow">Swallow</option>
-            <option value="soup">Soup</option>
-            <option value="drink">Drink</option>
-          </select>
-        </form>
-        <form>
-            <input type="text" id="meal" placeholder="Meal/Drink">
-            <input type="text" id="meal" placeholder="Meal/Drink">
-            <input type="text" id="meal" placeholder="Meal/Drink">
-            <input type="text" id="meal" placeholder="Meal/Drink">
-            <input type="text" id="meal" placeholder="Meal/Drink">
+          <input type="text" id="price" placeholder="Price">
+          <button type="submit" class="form-btn">Add To Menu</button>
         </form>
       </article>
     </section>
-    <!-- Add Menu End  -->
+    <!-- Create Menu End  -->
 
 
 

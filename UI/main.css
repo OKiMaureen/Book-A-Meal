@@ -26,25 +26,15 @@ nav ul a:hover{
     color:#A7095C;
     padding-left:30px;
 }
+nav ul a:active{
+    background: #474747;
+    color:#4A772F;
+    padding-left:30px;
+}
 
 .nav-container img{
     width:50px;
     align-self: center;
-}
-.signout{
-    display:block;
-    background:rgb(74, 119, 47,0.5);
-    padding:20px;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 12px;
-    align-self: center;  
 }
 .logo{
     color:transparent;
@@ -101,7 +91,7 @@ nav{
     font-size: 20px;
     color:#ffffff;
 }
-.meal{
+.meal-span{
     color: #ffffff;
     font-size: 55px;
 }
@@ -166,6 +156,11 @@ nav{
          background:transparent;
          padding-left:20px;  
      }
+     nav ul a:active{
+        background: transparent;
+        color:#4A772F;
+        padding-left:20px;
+    }
 }
 
 
@@ -300,6 +295,7 @@ form h3{
     text-align: center;
     text-transform:uppercase;
     color:#A7095C;
+    font-size: 50px;
 }
 form p{
     text-align: center;
@@ -310,8 +306,8 @@ form p a{
     text-decoration: none;
     cursor: pointer;
 }
-form input{
-    padding:5px;
+form input,select{
+    padding:15px;
     border:1px solid #A7095C;
 }
 input::placeholder{
