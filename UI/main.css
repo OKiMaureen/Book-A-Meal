@@ -451,6 +451,18 @@ input::placeholder{
     text-decoration: underline;
     padding-top:30px;
 }
-
+.meal-button{
+    background-color:#A7095C;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+}
 
 
