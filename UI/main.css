@@ -466,7 +466,7 @@ input::placeholder{
 
 table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
+    border-collapse:collapse;
     width: 70%;
 }
 
@@ -502,6 +502,15 @@ tr {
 }
 .total table,td,th{
     border: none;
+}
+
+/* orders */
+.orders{
+    margin:20px;
+    padding: 10px;
+}
+.orders p{
+    color: #0a0000;
 }
 
 
