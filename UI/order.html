@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book-A-Meal</title>
+  <!--main css -->
+  <link href="main.css" rel="stylesheet">
+  <!--google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+  <!--font awesome -->
+  <script src="fontawesome-all.js"></script>
+
+  <body>
+    <header>
+      <nav>
+        <div class="nav-container">
+          <div class="btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+
+        <ul>
+          <div class="logo">Book-A-Meal</div>
+          <li>
+            <a href="index.html">home</a>
+          </li>
+          <li>
+            <a href="meal.html">Create Meal</a>
+          </li>
+          <li>
+            <a href="createmenu.html">Set Menu</a>
+          </li>
+          <li>
+            <a href="order.html">Orders</a>
+          </li>
+          <li>
+            <a href="#" onclick="">Sign Out</a>
+          </li>
+        </ul>
+
+
+      </nav>
+
+    </header>
+    <!-- Header End-->
+
+    <!-- Orders -->
+    <section class="cart">
+      <h2>Orders</h2>
+      <div class="orders">
+      <form action="/action_page.php">
+        <p>choose date</p>
+        <input type="date" name="date" placeholder="select date">
+      </form>
+    </div>
+      <table>
+        <tr>
+          <th>Meal</th>
+          <th>Price</th>
+          <th>quantity</th>
+          <th>Total</th>
+          </tr>
+        <tr>
+          <td>Amala</td>
+          <td>N100</td>
+          <td>1</td>
+          <td>N100</td>
+        </tr>
+        <tr>
+          <td>Ewede</td>
+          <td>N200</td>
+          <td>1</td>
+          <td>N200</td>
+         </tr>
+        <tr>
+          <td>Juice</td>
+          <td>N300</td>
+          <td>1</td>
+          <td>N300</td>
+        </tr>
+        <tr>
+          <td>Malt</td>
+          <td>N200</td>
+          <td>1</td>
+          <td>N200</td>
+         </tr>
+      </table>
+      <div class="total">
+        <table>
+          <tr>
+            <td>Total:</td>
+            <td>N700</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- Order History End  -->
+
+
+
+    <!--Footer Section -->
+    <footer>
+      <p>copyright&copy;Book-A-meal 2018. All rights reserved.</p>
+    </footer>
+
+
+    <!--Footer Section End -->
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+
+</html>

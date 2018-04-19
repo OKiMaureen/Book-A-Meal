@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book-A-Meal</title>
+  <!--main css -->
+  <link href="main.css" rel="stylesheet">
+  <!--google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+  <!--font awesome -->
+  <script src="fontawesome-all.js"></script>
+
+  <body>
+    <header>
+      <nav>
+        <div class="nav-container">
+          <div class="btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+
+        <ul>
+          <div class="logo">Book-A-Meal</div>
+          <li>
+            <a href="index.html">home</a>
+          </li>
+          <li>
+            <a href="meal.html">Create Meal</a>
+          </li>
+         <li>
+            <a href="createmenu.html">Set Menu</a>
+          </li>
+          <li>
+            <a href="order.html">Orders</a>
+          </li>
+          <li>
+            <a href="#" onclick="">Sign Out</a>
+          </li>
+        </ul>
+
+      </nav>
+
+    </header>
+    <!-- Header End-->
+
+    <!--  Create Menu  -->
+    <section class="meal">
+
+      <article class="card">
+        <form action="/action_page.php">
+          <h3>Set Menu</h3>
+          <input type="date" name="date" placeholder="select date">
+          <select>
+            <option value="category">Category</option>
+            <option value="swallow">Swallow</option>
+            <option value="soup">Soup</option>
+            <option value="drink">Drink</option>
+          </select>
+          <select>
+            <option value="meal">Meal</option>
+            <option value="swallow">Eba</option>
+            <option value="soup">Amala</option>
+            <option value="drink">Semo</option>
+          </select>
+          <input type="text" id="price" placeholder="Price">
+          <button type="submit" class="form-btn">Add To Menu</button>
+        </form>
+      </article>
+    </section>
+    <!-- Create Menu End  -->
+
+    <!--Footer Section -->
+    <footer>
+      <p>copyright&copy;Book-A-meal 2018. All rights reserved.</p>
+    </footer>
+    <!--Footer Section End -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+
+</html>
