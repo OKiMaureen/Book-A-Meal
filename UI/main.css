@@ -497,6 +497,8 @@ tr {
 }
 .total{
     margin: 15px;
+    display:flex;
+    flex-direction: row;
 }
 .total table,td,th{
     border: none;
