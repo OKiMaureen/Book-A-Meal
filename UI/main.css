@@ -37,7 +37,7 @@ nav ul a:active{
     align-self: center;
 }
 .logo{
-    color:transparent;
+    color:#4A772F;
     align-self: center;
 }
 .nav-container{ 
@@ -329,10 +329,27 @@ input::placeholder{
     color:#A7095C;
     background: #e0e0ce;
 }
+form a{
+    margin:10px;
+    font-size: 20px;
+    border-radius:40px;
+    padding:5px;
+    background: #A7095C;
+    color:#e0e0ce;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 1s ease 1s, 
+    background 1s ease 1s;
+    text-align: center;
+}
+form a:hover{
+    color:#A7095C;
+    background: #e0e0ce;
+}
 /* menu */
 .menu{
     padding:0 0 100px 0;
-    background:#474747;
+    background:#e0e0ce;
 }
 .title h2{
     font-size: 40px;
@@ -494,6 +511,13 @@ tr {
     font-size: 30px;
     text-transform: uppercase;
     padding: 20px;
+}
+.cart-btn{
+    margin-left:10px; 
+}
+.cart-btn button{
+    text-decoration: none;
+    color:#ffffff;
 }
 .total{
     margin: 15px;
