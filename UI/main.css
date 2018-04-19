@@ -32,7 +32,9 @@ nav ul a:hover{
     align-self: center;
 }
 .signout{
-    background-color:#A7095C;
+    display:block;
+    background:rgb(74, 119, 47,0.5);
+    padding:20px;
     border: none;
     color: white;
     padding: 10px;
