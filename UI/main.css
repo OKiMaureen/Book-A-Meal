@@ -459,7 +459,7 @@ form a:hover {
 .menu-item img {
   border: 1px solid #ccc;
   width: 100%;
-  display: inline-flex;
+  display: flex;
   transition: opacity 2s ease, transform 2s ease;
 }
 
@@ -474,8 +474,11 @@ form a:hover {
   color: white;
   padding: 20px;
   text-align: center;
-  height: 40%;
+  height:55%;
   align-self: center;
+}
+.text-block p{
+  margin: 4px;
 }
 
 .view {
@@ -594,13 +597,24 @@ tr {
   padding: 20px;
 }
 
-.cart-btn {
+.cart-btn-div {
   margin-left: 10px;
+  
+  color:#FA9E05;
+}
+.green-btn{
+  background: #4A772F;
+  color:#ffffff;
+  border-radius: 10%;
 }
 
-.cart-btn button {
+.green-btn a{
   text-decoration: none;
   color: #ffffff;
+ 
+}
+.delete{
+  color:#A7095C;
 }
 
 .total {
