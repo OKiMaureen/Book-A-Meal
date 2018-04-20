@@ -1,5 +1,5 @@
 $(document).ready(()=>{
     $(".btn").click(()=>{
-        $("nav ul").slideToggle(3000);
+        $("nav ul").slideToggle(700);
     })
 })
