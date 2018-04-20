@@ -203,7 +203,7 @@ nav{
 
     @media screen and (min-width:550px){
         .about-center{
-            width:70%;
+            width:100%;
         }
     }
     @media screen and (min-width:750px){
