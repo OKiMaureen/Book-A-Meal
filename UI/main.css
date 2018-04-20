@@ -19,7 +19,7 @@ nav ul a{
     text-decoration:none;
     text-transform:uppercase;
     color:#FA9E05;
-    transition: color 2s ease, background 2s ease, padding 2s ease;
+    transition: color 1s ease, background 1s ease, padding 1s ease;
 }
 nav ul a:hover{
     background: #474747;
@@ -50,20 +50,22 @@ nav ul a:active{
 .bar{
     width:20px;
     height: 3px;
-    margin:8px;
+    margin:5px;
     background: #A7095C;
+    
+    
 }
 .btn {
-    padding:20px;
+    padding:8px;
     display:inline-block;
     border:1px solid #A7095C;
-    align-self: center;
-    margin: 5px 0 5px 0;
-    height: 30px;
+    margin: 3px;
+    height: 25px;
 }
 .header {
     min-height: 100vh;
-    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/header-img.jpg)center/cover fixed no-repeat;
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/header-img.jpg)center/cover 
+    fixed no-repeat;
     display:flex;
     flex-direction: column;
 }
