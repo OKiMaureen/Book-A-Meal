@@ -24,7 +24,7 @@ nav ul a {
   text-decoration: none;
   text-transform: uppercase;
   color: #FA9E05;
-  transition: color 0.3s ease, background 0.3s ease, padding 0.3s ease;
+  transition: color 1s ease, background 1s ease, padding 1s ease;
 }
 
 nav ul a:hover {
