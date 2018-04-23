@@ -930,17 +930,17 @@ tr {
 }
 
 .total {
-  margin: 10px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
+  align-self: center;
 }
 
 .total table,
 td,
 th {
   border: none;
-  align-self: center;
-  width:10%;
+  width:50%;
   font-size: 8px;
 
 }
