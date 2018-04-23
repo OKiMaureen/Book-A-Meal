@@ -916,6 +916,7 @@ tr {
   background: #4A772F;
   color:#ffffff;
   border-radius: 10%;
+  margin-left: 10px;
   font-size: 8px;
 }
 
@@ -938,9 +939,10 @@ tr {
 td,
 th {
   border: none;
-  margin-left: 10px;
+  align-self: center;
   width:10%;
   font-size: 8px;
+
 }
 
 @media screen and (min-width:750px) {
