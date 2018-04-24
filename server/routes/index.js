@@ -12,5 +12,7 @@ const routes = (app) => {
   app.get('/api/v1/meals', mealController.getAllMeal);
   // post meals
   app.post('/api/v1/meals', mealController.postMeal);
+  // update meals
+  app.put('/api/v1/meals/:id', mealController.putMeal);
 };
 export default routes;
