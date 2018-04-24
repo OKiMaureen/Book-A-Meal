@@ -49,6 +49,13 @@ class Menu {
    * @memberof Menu
    */
   getMenu(req, res) {
+    const foundDate = menuDb.find(menu => menu.date === req.query.date);
+    if (foundDate) {
+      return res.status(201).json({
+        menu: foundDate,
+        status: 'success'
+      });
+    }
     res.status(200).json({
       menu: menuDb,
       status: 'success'
