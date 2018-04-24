@@ -8,7 +8,7 @@ class Meal {
    * GET all  meals
    * @param {any} req
    * @param {any} res
-   * @returns {json} gets all meals
+   * @returns {json} it gets all meals
    * @memberof Meal
    */
   getAllMeal(req, res) {
