@@ -20,5 +20,7 @@ const routes = (app) => {
   app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
   // post menu
   app.post('/api/v1/menu', menuController.postMenu);
+  // get menu
+  app.get('/api/v1/menu', menuController.getMenu);
 };
 export default routes;
