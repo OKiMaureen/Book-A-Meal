@@ -1,7 +1,7 @@
 import mealsDb from '../model/meal';
 /**
- * class Event controls all event methods
- * @class meal
+ * class Meal controls all meals methods
+ * @class Meal
  */
 class Meal {
   /**
