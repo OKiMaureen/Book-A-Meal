@@ -1,5 +1,7 @@
 // Import meal controller
-import mealController from '../controllers/mealController';
+import mealsController from '../controllers/mealController';
+// Import meal controller
+import menuController from '../controllers/menuController';
 
 const routes = (app) => {
   // default route
@@ -9,12 +11,14 @@ const routes = (app) => {
   });
 
   // get of all meals
-  app.get('/api/v1/meals', mealController.getAllMeal);
+  app.get('/api/v1/meals', mealsController.getAllMeal);
   // post meals
-  app.post('/api/v1/meals', mealController.postMeal);
+  app.post('/api/v1/meals', mealsController.postMeal);
   // update meals
-  app.put('/api/v1/meals/:id', mealController.putMeal);
+  app.put('/api/v1/meals/:id', mealsController.putMeal);
   // delete meals
-  app.delete('/api/v1/meals/:id', mealController.deleteMeal);
+  app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
+  // post menu
+  app.post('/api/v1/menu', menuController.postMenu);
 };
 export default routes;
