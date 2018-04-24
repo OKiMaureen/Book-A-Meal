@@ -4,8 +4,7 @@
   "description": "An andela cycle 31 project",
   "main": "app.js",
   "scripts": {
-    "start": "node server/dist/app.js",
-    "start:dev": "nodemon server/app.js --exec babel-node",
+    "start": "nodemon --watch server --exec babel-node server/app.js",
     "build": "babel server -d server/dist"
   },
   "repository": {
