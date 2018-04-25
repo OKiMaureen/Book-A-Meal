@@ -14,5 +14,7 @@ const routes = (app) => {
   app.post('/api/v1/meals', mealController.postMeal);
   // update meals
   app.put('/api/v1/meals/:id', mealController.putMeal);
+  // delete meals
+  app.delete('/api/v1/meals/:id', mealController.deleteMeal);
 };
 export default routes;
