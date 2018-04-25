@@ -78,6 +78,19 @@ class Order {
       return res.status(404).send(`cannot find order with id ${id}`);
     }
   }
+  /**
+   * GET all  orders
+   * @param {any} req
+   * @param {any} res
+   * @returns {json} gets all orders
+   * @memberof Order
+   */
+  getOrder(req, res) {
+    res.status(200).json({
+      orders: ordersDb,
+      status: 'success'
+    });
+  }
 }
 const ordersController = new Order();
 export default ordersController;

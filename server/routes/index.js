@@ -28,5 +28,7 @@ const routes = (app) => {
   app.post('/api/v1/orders', ordersController.postOrder);
   // put order
   app.put('/api/v1/orders/:id', ordersController.putOrder);
+  // get order
+  app.get('/api/v1/orders', ordersController.getOrder);
 };
 export default routes;
