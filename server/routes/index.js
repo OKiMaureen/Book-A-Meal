@@ -4,6 +4,7 @@ import mealsController from '../controllers/mealController';
 import menuController from '../controllers/menuController';
 // Import order controller
 import ordersController from '../controllers/orderController';
+import Validator from '../validations';
 
 const routes = (app) => {
   // default route
@@ -15,9 +16,9 @@ const routes = (app) => {
   // get of all meals
   app.get('/api/v1/meals', mealsController.getAllMeal);
   // post meals
-  app.post('/api/v1/meals', mealsController.postMeal);
+  app.post('/api/v1/meals', Validator.mealValidator, mealsController.postMeal);
   // update meals
-  app.put('/api/v1/meals/:id', mealsController.putMeal);
+  app.put('/api/v1/meals/:id', Validator.mealValidator, mealsController.putMeal);
   // delete meals
   app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
   // post menu
