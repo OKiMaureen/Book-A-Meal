@@ -1,8 +1,7 @@
 
 const menuDb = [
   {
-    id: 1,
-    date: '20/4/2020',
+    date: '4/25/2018',
     meals: [
       {
         id: 1,

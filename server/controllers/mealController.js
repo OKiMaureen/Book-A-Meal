@@ -54,7 +54,7 @@ class Meal {
     mealsDb.forEach((meal) => {
       if (meal.id === parseInt(id, 10)) {
         meal.category = req.body.category || meal.category;
-        meal.name = req.body.name || meal.nmae;
+        meal.name = req.body.name || meal.name;
         meal.price = req.body.price || meal.location;
         putMeal = meal;
       }

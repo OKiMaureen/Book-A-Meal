@@ -1,7 +1,9 @@
 // Import meal controller
 import mealsController from '../controllers/mealController';
-// Import meal controller
+// Import menu controller
 import menuController from '../controllers/menuController';
+// Import order controller
+import ordersController from '../controllers/orderController';
 
 const routes = (app) => {
   // default route
@@ -22,5 +24,7 @@ const routes = (app) => {
   app.post('/api/v1/menu', menuController.postMenu);
   // get menu
   app.get('/api/v1/menu', menuController.getMenu);
+  // post order
+  app.post('/api/v1/orders', ordersController.postOrder);
 };
 export default routes;

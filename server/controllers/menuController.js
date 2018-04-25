@@ -29,7 +29,6 @@ class Menu {
     }
     const meals = mealIds.map(mealId => mealsDb.find(meal => meal.id === mealId));
     const menu = {
-      id: menuDb.length + 1,
       date: req.body.date,
       meals
     };
