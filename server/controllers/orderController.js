@@ -25,7 +25,7 @@ class Order {
       const id = ordersDb.length + 1;
       const { mealIds } = req.body;
 
-      const meals = mealIds.map(mealId => menuDb.meals.find(meal => meal.id === mealId));
+      const meals = mealIds.map(mealId => menuForTheDay.meals.find(meal => meal.id === mealId));
       const order = {
         id,
         meals
