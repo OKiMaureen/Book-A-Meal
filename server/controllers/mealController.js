@@ -17,6 +17,30 @@ class Meal {
       status: 'success'
     });
   }
+  /**
+   * POST a new event
+   * @param {any} req
+   * @param {any} res
+   * @returns {json} adds new event
+   * @memberof Event
+   */
+  postMeal(req, res) {
+    const { category, name, price } = req.body;
+    const id = mealsDb.length + 1;
+    const meal = {
+      id,
+      category,
+      name,
+      price
+    };
+    mealsDb.push(meal);
+    return res.status(201)
+      .json({
+        status: 'sucessfully updated',
+        message: 'meal added',
+        meal
+      });
+  }
 }
 const mealController = new Meal();
 export default mealController;
