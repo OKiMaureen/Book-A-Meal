@@ -1,0 +1,37 @@
+{
+  "name": "book-a-meal",
+  "version": "1.0.0",
+  "description": "An andela cycle 31 project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server/dist/app.js",
+    "start:dev": "nodemon server/app.js --exec babel-node",
+    "build": "babel server -d server/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OKiMaureen/Book-A-Meal.git"
+  },
+  "author": "maureen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OKiMaureen/Book-A-Meal/issues"
+  },
+  "homepage": "https://github.com/OKiMaureen/Book-A-Meal#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "mocha": "^5.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.17.3"
+  }
+}
