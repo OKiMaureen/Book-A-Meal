@@ -46,7 +46,7 @@ class Validator {
       // check for name of meal length
       if (!validator.isLength(name, {
         min: 3,
-        max: 15
+        max: 18
       })) {
         errors.name = 'name of meal must between 3 to 15 characters';
       }
