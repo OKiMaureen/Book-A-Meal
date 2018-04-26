@@ -35,7 +35,7 @@ class Order {
       ordersDb.push(order);
       return res.status(201)
         .json({
-          status: 'sucessfully updated',
+          status: 'successfully updated',
           message: 'order added',
           order
         });
