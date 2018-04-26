@@ -36,7 +36,7 @@ class Meal {
     mealsDb.push(meal);
     return res.status(201)
       .json({
-        status: 'sucessfully updated',
+        status: 'successfully updated',
         message: 'meal added',
         meal
       });
@@ -66,7 +66,7 @@ class Meal {
         meal: putMeal
       });
     }
-    return res.status(404).send(`cannot find meal with id ${id}`);
+    return res.status(400).send(`cannot find meal with id ${id}`);
   }
   /**
    * DELETE a meal
@@ -82,7 +82,7 @@ class Meal {
         return res.status(200)
           .json({
             status: 'successfully deleted',
-            message: 'Meal has been deleted'
+            message: 'meal has been deleted'
           });
       }
     }

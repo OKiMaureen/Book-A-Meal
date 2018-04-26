@@ -15,14 +15,14 @@ class Menu {
   postMenu(req, res) {
     const { mealIds } = req.body;
     if (!req.body.date) {
-      return res.json({
+      return res.status(400).json({
         message: 'date is required',
         error: true
       });
     }
-    const menusAlreadyWithDate = menuDb.filter(menu => menu.date === req.body.date);
-    if (menusAlreadyWithDate.length > 1) {
-      return res.json({
+    const menuDateExisting = menuDb.filter(menu => menu.date === req.body.date);
+    if (menuDateExisting.length > 1) {
+      return res.status(400).json({
         message: 'date is already existing',
         error: true
       });
@@ -35,7 +35,7 @@ class Menu {
     menuDb.push(menu);
     return res.status(201)
       .json({
-        status: 'sucessfully updated',
+        status: 'successfully updated',
         message: 'menu added',
         menu
       });
