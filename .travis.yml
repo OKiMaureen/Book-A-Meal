@@ -1,4 +1,4 @@
-nv:
+env:
   global:
     - CC_TEST_REPORTER_ID=cfec62a16f5f88c8ddda45a173cc39f0d906412bdcce7016495706e7e29734c9
 language : node_js
@@ -14,4 +14,3 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-after_success: npm run coveralls

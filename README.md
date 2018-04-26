@@ -48,13 +48,34 @@ sequelize
 postgreSQL
 
 ## Installation
-coming soon
+1. Clone this repository into your local machine:
+```
+git clone https://github.com/OKiMaureen/Book-A-Meal
+```
+2. Install dependencies
+```
+npm install
+```
+3. Start the application by running
+```
+npm start
+4. Install postman to test all endpoints on port '8020'
+
+
 
 ## Testing
-coming soon   
+run test using 'npm test'
 
 ## API Routes
-coming soon
+GET /meals/
+POST /meals/
+POST /meals/
+DELETE /meals/<mealId>
+POST /menu/ 
+GET /menu/ 
+POST /orders 
+PUT /orders/orderId 
+GET /orders 
 
 ## LICENSE
 This project is licensed under the MIT License - see the LICENSE.md file for details
