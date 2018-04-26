@@ -3,7 +3,6 @@ node_js:
 - "stable"
 env:
 global:
-- export NODE_ENV=test
 - CC_TEST_REPORTER_ID=cfec62a16f5f88c8ddda45a173cc39f0d906412bdcce7016495706e7e29734c9
 before_script:
 - npm install
