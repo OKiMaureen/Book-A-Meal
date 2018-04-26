@@ -4,6 +4,7 @@ node_js:
 env:
 global:
  - export NODE_ENV=test
+ - cfec62a16f5f88c8ddda45a173cc39f0d906412bdcce7016495706e7e29734c9
 before_script:
 - npm install
 script:
