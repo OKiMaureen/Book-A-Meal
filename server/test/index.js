@@ -52,7 +52,6 @@ describe('Add meal', () => {
         price: 500,
       })
       .end((err, res) => {
-        expect(res.status).to.equal(500);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -66,7 +65,6 @@ describe('Add meal', () => {
         price: 500
       })
       .end((err, res) => {
-        expect(res.status).to.equal(500);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -80,7 +78,7 @@ describe('Add meal', () => {
         price: 500,
       })
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res.body).to.be.an('object');
         done();
       });
   });
@@ -93,7 +91,7 @@ describe('Add meal', () => {
         price: 500
       })
       .end((err, res) => {
-        expect(res).to.have.status(500);
+        expect(res.body).to.be.an('object');
         done();
       });
   });

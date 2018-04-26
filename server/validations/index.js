@@ -15,6 +15,11 @@ export const mealValidator = (req, res, next) => {
   }
   if (category && validator.isEmpty(category || '')) {
     errors.category = 'category is required';
+    return res.status(406)
+      .send({
+        status: 'Fail',
+        message: 'meal name must be between 3 to 15 characters',
+      });
   }
   // check if meal name is empty
   if (!name) {
