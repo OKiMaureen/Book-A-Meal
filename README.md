@@ -1,5 +1,6 @@
 # Book-A-Meal
-[![Build Status](https://travis-ci.org/OKiMaureen/Book-A-Meal.svg?branch=ci-coverage)](https://travis-ci.org/OKiMaureen/Book-A-Meal) [![Coverage Status](https://coveralls.io/repos/github/OKiMaureen/Book-A-Meal/badge.svg?branch=ci-coverage)](https://coveralls.io/github/OKiMaureen/Book-A-Meal.svg?branch=ci-coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/a5a45a1da4b3a7209757/maintainability)](https://codeclimate.com/github/OKiMaureen/Book-A-Meal/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a5a45a1da4b3a7209757/test_coverage)](https://codeclimate.com/github/OKiMaureen/Book-A-Meal/test_coverage)
+[![Build Status](https://travis-ci.org/OKiMaureen/Book-A-Meal.svg?branch=ci-coverage)](https://travis-ci.org/OKiMaureen/Book-A-Meal) [![Coverage Status](https://coveralls.io/repos/github/OKiMaureen/Book-A-Meal/badge.svg?branch=ci-coverage)](https://coveralls.io/github/OKiMaureen/Book-A-Meal.svg?branch=ci-coverage) [![Maintainability]<a href="https://codeclimate.com/github/OKiMaureen/Book-A-Meal/maintainability"><img src="https://api.codeclimate.com/v1/badges/28db66ae72040322f0f5/maintainability" /></a>
+<a href="https://codeclimate.com/github/OKiMaureen/Book-A-Meal/test_coverage"><img src="https://api.codeclimate.com/v1/badges/28db66ae72040322f0f5/test_coverage" /></a>
 
 
 ## Application Description
