@@ -8,36 +8,31 @@ export const mealValidator = (req, res, next) => {
     name,
     price
   } = req.body;
-  const errors = {};
+  const error = {};
   // check if category is empty
   if (!category) {
-    errors.category = 'category is required';
+    error.category = 'category is required';
   }
   if (category && validator.isEmpty(category || '')) {
-    errors.category = 'category is required';
-    return res.status(406)
-      .send({
-        status: 'Fail',
-        message: 'meal name must be between 3 to 15 characters',
-      });
+    error.category = 'category is required';
   }
   // check if meal name is empty
   if (!name) {
-    errors.name = 'name is required';
+    error.name = 'name is required';
   }
   if (name && validator.isEmpty(name || '')) {
-    errors.name = 'name is required';
+    error.name = 'name is required';
   }
   // check if price is empty
   if (!price) {
-    errors.price = 'price is required';
+    error.price = 'price is required';
   }
   if (price && validator.isEmpty(price || '')) {
-    errors.price = 'price is required';
+    error.price = 'price is required';
   }
-  if (isEmpty(errors)) return next();
+  if (isEmpty(error)) return next();
   return res.status(400).json({
-    errors
+    error
   });
 };
 
@@ -56,14 +51,14 @@ export const verifyMealLength = (req, res, next) => {
 };
 export const verifyMealNumber = (req, res, next) => {
   const { price } = req.body;
-  const errors = {};
+  const error = {};
 
 
   if (Number.isNaN(parseInt(price, 10))) {
-    errors.price = 'price must be a number';
+    error.price = 'price must be a number';
   }
-  if (isEmpty(errors)) return next();
+  if (isEmpty(error)) return next();
   return res.status(400).json({
-    errors
+    error
   });
 };

@@ -10,7 +10,7 @@ const mealURL = '/api/v1/meals';
 const menuURL = '/api/v1/menu';
 const orderURL = '/api/v1/orders';
 
-describe('Test API', () => {
+describe('Test default route', () => {
   // Test for default route
   it('Should return 200 for the default route', (done) => {
     chai.request(app)
@@ -20,7 +20,7 @@ describe('Test API', () => {
         done();
       });
   });
-  // Test for getting undefined rouotes
+  // Test for getting undefined routes
   it('Should return 404 for routes not specified', (done) => {
     chai.request(app)
       .get('/another/undefined/route')
@@ -29,7 +29,7 @@ describe('Test API', () => {
         done();
       });
   });
-  // Test for posting to undefind rouotes
+  // Test for posting to undefined rouotes
   it('Undefined Routes Should Return 404', (done) => {
     chai.request(app)
       .post('/another/undefined/route')
@@ -42,14 +42,14 @@ describe('Test API', () => {
 });
 
 // Test Meal Controller
-describe('Add meal', () => {
-  it('should not add meal with an empty category field', (done) => {
+describe('POST /api/v1/meal', () => {
+  it('should not add meal with an empty category', (done) => {
     chai.request(app)
       .post(`${mealURL}`)
       .send({
         category: '',
         name: 'Amala',
-        price: 500,
+        price: 100
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -106,7 +106,7 @@ describe('Add meal', () => {
       .end((err, res) => {
         expect(res.status).to.equal(400);
         expect(res.body).to.be.an('object');
-        expect(res.body.errors.price)
+        expect(res.body.error.price)
           .to.include('price is required');
         done();
       });
@@ -122,7 +122,7 @@ describe('Add meal', () => {
       .end((err, res) => {
         expect(res.status).to.equal(400);
         expect(res.body).to.be.an('object');
-        expect(res.body.errors.price)
+        expect(res.body.error.price)
           .to.include('price must be a number');
         done();
       });
@@ -217,7 +217,7 @@ describe('Add menu', () => {
     chai.request(app)
       .post(`${menuURL}`)
       .send({
-        date: '2018-4-25',
+        date: '2018-4-29',
         mealIds: [1, 2, 3]
       })
       .end((err, res) => {
