@@ -726,13 +726,15 @@ form a:hover {
   }
   
   .title h2 {
+    margin-top: 1px;
+    margin-bottom: 5px;
     font-size: 40px;
     text-align: center;
     text-transform: uppercase;
     color: #A7095C;
   }
   .title p  {
-    margin-top: 15px;
+    margin-top: 5px;
     font-size: 15px;
   }
   
@@ -740,15 +742,15 @@ form a:hover {
     background: #4A772F;
     width: 100px;
     height: 4px;
-    margin: 10px auto;
+    margin: 5px auto;
   }
   
   .title {
-    padding: 70px;
+    padding: 40px;
   }
   
   .category {
-    margin: 20px;
+    margin: 5px;
   }
   
   .category h3 {
@@ -924,6 +926,7 @@ tr {
   border-radius: 10%;
   margin-left: 10px;
   font-size: 8px;
+  padding:5px;
 }
 
 .green-btn a{
@@ -945,6 +948,7 @@ tr {
 .total table,
 td,
 th {
+  margin-top: 5px;
   border: none;
   width:50%;
   font-size: 8px;
@@ -996,11 +1000,13 @@ th {
     color:#ffffff;
     border-radius: 10%;
     font-size: 15px;
+    padding:8px;
   }
   
   .green-btn a{
     text-decoration: none;
     color: #ffffff;
+   
    
   }
   .delete{
