@@ -18,17 +18,17 @@ nav ul {
 
 nav ul a {
   display: block;
-  background: rgb(74, 119, 47, 0.5);
+  background: rgba(10, 12, 8, 0.9);
   padding: 10px;
   font-size: 12px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #FA9E05;
+  color: #A7095C;
   transition: color 1s ease, background 1s ease, padding 1s ease;
 }
 
 nav ul a:hover {
-  background: #474747;
+  background: #FA9E05;
   color: #A7095C;
   padding-left: 20px;
 }
@@ -650,7 +650,7 @@ form a:hover {
   }
 }
 
-/* menu page container big screen */
+/* menu page container small screen */
 
 .menu {
   padding: 0 0 60px 0;
@@ -664,8 +664,9 @@ form a:hover {
   color: #A7095C;
 }
 .title p  {
-  margin-top: 15px;
-  font-size: 8px;
+  margin-top: 40px;
+  font-size: 10px;
+  text-align: right;
 }
 .underline {
   background: #4A772F;
@@ -675,7 +676,7 @@ form a:hover {
 }
 
 .title {
-  padding: 40px;
+  padding: 20px;
 }
 
 .category {
@@ -733,8 +734,8 @@ form a:hover {
   color: #e0e0ce;
   text-decoration: none;
 }
-/* menu page container small screen */
-@media screen and (min-width:320px) {
+/* menu page container big screen */
+@media screen and (min-width:550px) {
   .menu {
     padding: 0 0 100px 0;
     background: #e0e0ce;
