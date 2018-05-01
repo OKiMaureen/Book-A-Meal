@@ -223,22 +223,8 @@ describe('Add menu', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('successfully updated');
+        expect(res.body).to.have.property('status').equal('successfully added menu');
         expect(res.body).to.have.property('message').equal('menu added');
-        done();
-      });
-  });
-  it('Should return 400 for a menu post without date', (done) => {
-    chai.request(app)
-      .post(`${menuURL}`)
-      .send({
-        date: '',
-        mealIds: [1, 2, 3]
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message').equal('date is required');
         done();
       });
   });

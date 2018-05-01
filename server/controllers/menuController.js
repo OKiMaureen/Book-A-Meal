@@ -13,14 +13,9 @@ class Menu {
    * @memberof Menu
    */
   postMenu(req, res) {
+    const todaysDate = (new Date()).toLocaleDateString();
     const { mealIds } = req.body;
-    if (!req.body.date) {
-      return res.status(400).json({
-        message: 'date is required',
-        error: true
-      });
-    }
-    const menuDateExisting = menuDb.filter(menu => menu.date === req.body.date);
+    const menuDateExisting = menuDb.filter(menu => menu.date === todaysDate);
     if (menuDateExisting.length > 1) {
       return res.status(400).json({
         message: 'date is already existing',
@@ -29,13 +24,13 @@ class Menu {
     }
     const meals = mealIds.map(mealId => mealsDb.find(meal => meal.id === mealId));
     const menu = {
-      date: req.body.date,
+      date: todaysDate,
       meals
     };
     menuDb.push(menu);
     return res.status(201)
       .json({
-        status: 'successfully updated',
+        status: 'successfully added menu',
         message: 'menu added',
         menu
       });
@@ -48,17 +43,19 @@ class Menu {
    * @memberof Menu
    */
   getMenu(req, res) {
-    const foundDate = menuDb.find(menu => menu.date === req.query.date);
+    const todaysDate = (new Date()).toLocaleDateString();
+    const foundDate = menuDb.find(menu => menu.date === todaysDate);
     if (foundDate) {
-      return res.status(201).json({
-        menu: foundDate,
-        status: 'success'
+      return res.status(200).json({
+        status: 'success',
+        menu: foundDate
       });
     }
-    res.status(200).json({
-      menu: menuDb,
-      status: 'success'
-    });
+    if (!foundDate) {
+      return res.status(400).json({
+        status: 'no menu for the day yet',
+      });
+    }
   }
 }
 const menuController = new Menu();
