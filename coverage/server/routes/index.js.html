@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">18.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>3/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">18.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>3/16</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -93,37 +93,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Import meal controller
@@ -133,37 +133,37 @@ import menuController from '../controllers/menuController';
 // Import order controller
 import ordersController from '../controllers/orderController';
 &nbsp;
-import {
+<span class="cstat-no" title="statement not covered" >import {</span>
   mealValidator,
   verifyMealLength,
   verifyMealNumber
 } from '../validations';
 &nbsp;
-const routes = (app) =&gt; {
+const <span class="fstat-no" title="function not covered" >routes = <span class="cstat-no" title="statement not covered" >(</span>app) =&gt; {</span>
   // default route
-  app.get('/', (req, res) =&gt; {
-    res.status(200)
+<span class="cstat-no" title="statement not covered" >  app.get('/', <span class="fstat-no" title="function not covered" >(</span>req, res) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    res.status(200)</span>
       .send('Welcome to Book-A-Meal API');
   });
 &nbsp;
   // get of all meals
-  app.get('/api/v1/meals', mealsController.getAllMeal);
+<span class="cstat-no" title="statement not covered" >  app.get('/api/v1/meals', mealsController.getAllMeal);</span>
   // post meals
-  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.postMeal);
+<span class="cstat-no" title="statement not covered" >  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.postMeal);</span>
   // update meals
-  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.putMeal);
+<span class="cstat-no" title="statement not covered" >  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.putMeal);</span>
   // delete meals
-  app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
+<span class="cstat-no" title="statement not covered" >  app.delete('/api/v1/meals/:id', mealsController.deleteMeal);</span>
   // post menu
-  app.post('/api/v1/menu', menuController.postMenu);
+<span class="cstat-no" title="statement not covered" >  app.post('/api/v1/menu', menuController.postMenu);</span>
   // get menu
-  app.get('/api/v1/menu', menuController.getMenu);
+<span class="cstat-no" title="statement not covered" >  app.get('/api/v1/menu', menuController.getMenu);</span>
   // post order
-  app.post('/api/v1/orders', ordersController.postOrder);
+<span class="cstat-no" title="statement not covered" >  app.post('/api/v1/orders', ordersController.postOrder);</span>
   // put order
-  app.put('/api/v1/orders/:id', ordersController.putOrder);
+<span class="cstat-no" title="statement not covered" >  app.put('/api/v1/orders/:id', ordersController.putOrder);</span>
   // get order
-  app.get('/api/v1/orders', ordersController.getOrder);
+<span class="cstat-no" title="statement not covered" >  app.get('/api/v1/orders', ordersController.getOrder);</span>
 };
 export default routes;
 &nbsp;</pre></td></tr>
@@ -172,7 +172,7 @@ export default routes;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Apr 26 2018 23:46:03 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 01 2018 21:46:14 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
