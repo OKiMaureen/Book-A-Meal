@@ -54,7 +54,7 @@ class Order {
     if (!menuForTheDay) {
       return res.status(404).json({
         status: 'fail',
-        message: todaysDate
+        message: 'no menu date'
       });
     }
     if (menuForTheDay) {

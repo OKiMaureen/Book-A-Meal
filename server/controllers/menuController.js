@@ -20,8 +20,8 @@ class Menu {
         error: true
       });
     }
-    const menuDateExisting = menuDb.filter(menu => menu.date === req.body.date);
-    if (menuDateExisting.length > 1) {
+    const menuDateExisting = menuDb.find(menu => menu.date === req.body.date);
+    if (menuDateExisting) {
       return res.status(400).json({
         message: 'date is already existing',
         error: true
