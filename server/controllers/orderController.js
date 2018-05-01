@@ -86,14 +86,8 @@ class Order {
    * @memberof Order
    */
   getOrder(req, res) {
-    ordersDb.forEach((order) => {
-      const total = order.meals => Object.values(order.meals).reduce((a, b) => a + b);
-    });
-    
-    
     res.status(200).json({
       orders: ordersDb,
-      total,
       status: 'success'
     });
   }
