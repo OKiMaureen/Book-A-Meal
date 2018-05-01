@@ -66,7 +66,11 @@ class Meal {
         meal: putMeal
       });
     }
-    return res.status(400).send(`cannot find meal with id ${id}`);
+    return res.status(404).json({
+      status: 'meal not updated',
+      message: 'cannot find meal',
+      id
+    });
   }
   /**
    * DELETE a meal
@@ -76,8 +80,9 @@ class Meal {
    * @memberof Meal
    */
   deleteMeal(req, res) {
+    const { id } = req.params;
     for (let i = 0; i < mealsDb.length; i += 1) {
-      if (parseInt(mealsDb[i].id, 10) === parseInt(req.params.id, 10)) {
+      if (parseInt(mealsDb[i].id, 10) === parseInt(id, 10)) {
         mealsDb.splice(i, 1);
         return res.status(200)
           .json({
@@ -86,7 +91,11 @@ class Meal {
           });
       }
     }
-    return res.status(404).send('Meal not found');
+    return res.status(404).json({
+      status: 'meal not deleted',
+      message: 'cannot find meal',
+      id
+    });
   }
 }
 const mealController = new Meal();
