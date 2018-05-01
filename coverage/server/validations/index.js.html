@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>30/35</span>
+        <span class='fraction'>30/34</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">78.13% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">84.38% </span>
+        <span class="strong">87.1% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>27/32</span>
+        <span class='fraction'>27/31</span>
       </div>
     </div>
     <p class="quiet">
@@ -110,12 +110,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,11 +127,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
@@ -194,36 +184,31 @@ export const mealValidator = (req, res, next) =&gt; {
     name,
     price
   } = req.body;
-  const errors = {};
+  const error = {};
   // check if category is empty
   if (!category) {
-    errors.category = 'category is required';
+    error.category = 'category is required';
   }
   <span class="missing-if-branch" title="if path not taken" >I</span>if (category &amp;&amp; validator.isEmpty(category || <span class="branch-1 cbranch-no" title="branch not covered" >'')) {</span>
-<span class="cstat-no" title="statement not covered" >    errors.category = 'category is required';</span>
-<span class="cstat-no" title="statement not covered" >    return res.status(406)</span>
-      .send({
-        status: 'Fail',
-        message: 'meal name must be between 3 to 15 characters',
-      });
+<span class="cstat-no" title="statement not covered" >    error.category = 'category is required';</span>
   }
   // check if meal name is empty
   if (!name) {
-    errors.name = 'name is required';
+    error.name = 'name is required';
   }
   <span class="missing-if-branch" title="if path not taken" >I</span>if (name &amp;&amp; validator.isEmpty(name || <span class="branch-1 cbranch-no" title="branch not covered" >'')) {</span>
-<span class="cstat-no" title="statement not covered" >    errors.name = 'name is required';</span>
+<span class="cstat-no" title="statement not covered" >    error.name = 'name is required';</span>
   }
   // check if price is empty
   if (!price) {
-    errors.price = 'price is required';
+    error.price = 'price is required';
   }
   <span class="missing-if-branch" title="if path not taken" >I</span>if (price &amp;&amp; validator.isEmpty(price || <span class="branch-1 cbranch-no" title="branch not covered" >'')) {</span>
-<span class="cstat-no" title="statement not covered" >    errors.price = 'price is required';</span>
+<span class="cstat-no" title="statement not covered" >    error.price = 'price is required';</span>
   }
-  if (isEmpty(errors)) return next();
+  if (isEmpty(error)) return next();
   return res.status(400).json({
-    errors
+    error
   });
 };
 &nbsp;
@@ -242,15 +227,15 @@ export const verifyMealLength = (req, res, next) =&gt; {
 };
 export const verifyMealNumber = (req, res, next) =&gt; {
   const { price } = req.body;
-  const errors = {};
+  const error = {};
 &nbsp;
 &nbsp;
   if (Number.isNaN(parseInt(price, 10))) {
-    errors.price = 'price must be a number';
+    error.price = 'price must be a number';
   }
-  if (isEmpty(errors)) return next();
+  if (isEmpty(error)) return next();
   return res.status(400).json({
-    errors
+    error
   });
 };
 &nbsp;</pre></td></tr>
@@ -259,7 +244,11 @@ export const verifyMealNumber = (req, res, next) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
+<<<<<<< HEAD
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 01 2018 18:40:38 GMT+0100 (W. Central Africa Standard Time)
+=======
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 01 2018 14:52:14 GMT+0100 (W. Central Africa Standard Time)
+>>>>>>> 90e5676c30f5ed65ee06e621044b3d275cb08e27
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
