@@ -131,20 +131,21 @@ nav {
 .banner-icons {
   padding: 5px 0 2px;
   margin:3px;
+  font-size: 30px;
 }
 
 .banner-icons a {
   display: inline block;
   font-size: 20px;
-  padding: 10px 15px;
-  margin: 0 10px;
+  padding: 5px 5px;
+  margin: 5px 5px;
   border-radius: 50%;
-  color: #A7095C;
+  color: #FA9E05;
   transition: color 1s ease, transform 1s ease;
 }
 
 .banner-icons a:hover {
-  color: #4A772F;
+  color: #A7095C;
   transform: translateY(-10px);
 }
 
@@ -231,7 +232,21 @@ nav {
   border-radius: 12px;
 }
 .banner-icons {
-  padding: 20px;
+  padding: 10px;
+
+}
+.banner-icons a {
+  display: inline block;
+  font-size: 30px;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border-radius: 50%;
+  color: #FA9E05;
+  transition: color 1s ease, transform 1s ease;
+}
+.banner-icons a:hover {
+  color: #A7095C;
+  transform: translateY(-10px);
 }
 }
 

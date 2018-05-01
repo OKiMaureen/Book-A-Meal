@@ -54,7 +54,7 @@ class Order {
     if (!menuForTheDay) {
       return res.status(404).json({
         status: 'fail',
-        message: todaysDate
+        message: 'no menu for the day'
       });
     }
     if (menuForTheDay) {
@@ -86,8 +86,14 @@ class Order {
    * @memberof Order
    */
   getOrder(req, res) {
+    ordersDb.forEach((order) => {
+      const total = order.meals => Object.values(order.meals).reduce((a, b) => a + b);
+    });
+    
+    
     res.status(200).json({
       orders: ordersDb,
+      total,
       status: 'success'
     });
   }
