@@ -270,6 +270,31 @@ describe('Add order', () => {
         done();
       });
   });
+  it('Should return 403 for a order post with a meal not available', (done) => {
+    chai.request(app)
+      .post(`${orderURL}`)
+      .send({
+        mealIds: [1, 3, 300]
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status').equal('fail');
+        expect(res.body).to.have.property('message').equal('The meal id below is not available');
+        done();
+      });
+  });
+});
+describe('Get orders', () => {
+  it('should get all orders', (done) => {
+    chai.request(app)
+      .get(`${orderURL}`)
+      .end((err, res) => {
+        console.log('>>>', res.body);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
 });
 describe('Update Order', () => {
   it('Should return 200 if successful', (done) => {
@@ -290,21 +315,28 @@ describe('Update Order', () => {
   it('should not update a order that does not exist', (done) => {
     chai.request(app)
       .put('/api/v1/orders/10')
+      .send({
+        mealIds: [1, 2, 3]
+      })
       .end((err, res) => {
         expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status').equal('fail');
+        expect(res.body).to.have.property('message').equal('cannot find order');
         done();
       });
   });
-});
-describe('Get orders', () => {
-  it('should get all orders', (done) => {
+  it('should not update an order with a meal  that does not exist', (done) => {
     chai.request(app)
-      .get(`${orderURL}`)
+      .put('/api/v1/orders/1')
+      .send({
+        mealIds: [1, 2, 10]
+      })
       .end((err, res) => {
-        expect(res).to.have.status(200);
+        expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('success');
+        expect(res.body).to.have.property('status').equal('fail');
+        expect(res.body).to.have.property('message').equal('The meal id below is not available, replace with a meal on the menu');
         done();
       });
   });

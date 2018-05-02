@@ -16,29 +16,23 @@ class Order {
     const todaysDate = (new Date()).toLocaleDateString();
     const menuForTheDay = menuDb.find(menu => menu.date === todaysDate);
     if (!menuForTheDay) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'no menu for the day'
-      });
+      return res.status(404).json({ status: 'fail', message: 'no menu for the day' });
     }
-
     if (menuForTheDay) {
       const id = ordersDb.length + 1;
       const { mealIds } = req.body;
-
+      mealIds.forEach((mealId) => {
+        if (mealId > mealIds.length) {
+          return res.status(404).json({ status: 'fail', message: 'The meal id below is not available', id: mealId });
+        }
+      });
       const meals = mealIds.map(mealId => menuForTheDay.meals.find(meal => meal.id === mealId));
       const order = {
         id,
         meals
       };
-
       ordersDb.push(order);
-      return res.status(201)
-        .json({
-          status: 'successfully updated',
-          message: 'order added',
-          order
-        });
+      return res.status(201).json({ status: 'successfully updated', message: 'order added', order });
     }
   }
   /**
@@ -54,17 +48,26 @@ class Order {
     if (!menuForTheDay) {
       return res.status(404).json({
         status: 'fail',
-        message: 'no menu date'
+        message: todaysDate
       });
     }
     if (menuForTheDay) {
       const { id } = req.params;
       const { mealIds } = req.body;
+      mealIds.forEach((mealId) => {
+        if (mealId > mealIds.length) {
+          return res.status(404).json({
+            status: 'fail',
+            message: 'The meal id below is not available, replace with a meal on the menu',
+            id: mealId
+          });
+        }
+      });
       let putOrder;
+
       ordersDb.forEach((order) => {
         if (order.id === parseInt(id, 10)) {
           order.meals = mealIds.map(mealId => menuForTheDay.meals.find(meal => meal.id === mealId));
-
           putOrder = order;
         }
       });
@@ -75,7 +78,11 @@ class Order {
           order: putOrder
         });
       }
-      return res.status(404).send(`cannot find order with id ${id}`);
+      return res.status(404).json({
+        status: 'fail',
+        message: 'cannot find order',
+        id
+      });
     }
   }
   /**
@@ -86,9 +93,18 @@ class Order {
    * @memberof Order
    */
   getOrder(req, res) {
-    res.status(200).json({
+    let total = 0;
+    ordersDb.forEach((order) => {
+      order.meals.forEach((meal) => {
+        total += meal.price;
+      });
+    });
+
+
+    return res.status(200).json({
+      status: 'success',
       orders: ordersDb,
-      status: 'success'
+      total
     });
   }
 }
