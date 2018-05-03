@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.48% </span>
+        <span class="strong">93.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>43/46</span>
+        <span class='fraction'>41/44</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>11/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.5% </span>
+        <span class="strong">92.11% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>37/40</span>
+        <span class='fraction'>35/38</span>
       </div>
     </div>
     <p class="quiet">
@@ -141,25 +141,7 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,15 +186,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -220,12 +197,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -234,16 +206,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -317,46 +281,28 @@ class Order {
    * @memberof Order
    */
   updateOrder(req, res) {
-    const todaysDate = (new Date()).toLocaleDateString();
-    const menuForTheDay = menuDb.find(menu =&gt; menu.date === todaysDate);
+    const menuForTheDay = menuDb.find(menu =&gt; menu.date === (new Date()).toLocaleDateString());
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!menuForTheDay) {
-<span class="cstat-no" title="statement not covered" >      return res.status(404).json({</span>
-        status: 'fail',
-        message: todaysDate
-      });
+<span class="cstat-no" title="statement not covered" >      return res.status(404).json({ status: 'fail', message: 'cannot find menu for the day' });</span>
     }
     <span class="missing-if-branch" title="else path not taken" >E</span>if (menuForTheDay) {
-      const { id } = req.params;
       const { mealIds } = req.body;
       mealIds.forEach((mealId) =&gt; {
         if (mealId &gt; mealIds.length) {
-          return res.status(404).json({
-            status: 'fail',
-            message: 'The meal id below is not available, replace with a meal on the menu',
-            id: mealId
-          });
+          return res.status(404).json({ status: 'fail', message: 'The meal id below is not available', id: mealId });
         }
       });
       let putOrder;
-&nbsp;
       ordersDb.forEach((order) =&gt; {
-        if (order.id === parseInt(id, 10)) {
+        if (order.id === parseInt(req.params.id, 10)) {
           order.meals = mealIds.map(mealId =&gt; menuForTheDay.meals.find(meal =&gt; meal.id === mealId));
           putOrder = order;
         }
       });
       if (putOrder) {
-        return res.status(200).json({
-          status: 'successfully updated',
-          message: 'order updated',
-          order: putOrder
-        });
+        return res.status(200).json({ status: 'successfully updated', message: 'order updated', order: putOrder });
       }
-      return res.status(404).json({
-        status: 'fail',
-        message: 'cannot find order',
-        id
-      });
+      return res.status(404).json({ status: 'fail', message: 'cannot find order', id: req.params.id });
     }
   }
   /**
@@ -391,7 +337,7 @@ export default ordersController;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 03 2018 11:23:29 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 03 2018 12:13:58 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

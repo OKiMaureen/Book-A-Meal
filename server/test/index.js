@@ -336,7 +336,7 @@ describe('Update Order', () => {
         expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status').equal('fail');
-        expect(res.body).to.have.property('message').equal('The meal id below is not available, replace with a meal on the menu');
+        expect(res.body).to.have.property('message').equal('The meal id below is not available');
         done();
       });
   });
