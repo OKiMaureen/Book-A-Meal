@@ -33,6 +33,15 @@ class Meal {
   addMeal(req, res) {
     const { category, name, price } = req.body;
     const id = mealsDb.length + 1;
+    mealsDb.forEach((meal) => {
+      if (req.body.name === meal.name) {
+        return res.status(404)
+          .json({
+            status: 'fail',
+            message: 'meal name already exists, add another meal',
+          });
+      }
+    });
     const meal = {
       id,
       category,
@@ -58,6 +67,13 @@ class Meal {
     const { id } = req.params;
     let putMeal;
     mealsDb.forEach((meal) => {
+      if (req.body.name === meal.name) {
+        return res.status(400).json({
+          status: 'fail',
+          message: 'meal name already exists, add another meal',
+          meal: putMeal
+        });
+      }
       if (meal.id === parseInt(id, 10)) {
         meal.category = req.body.category || meal.category;
         meal.name = req.body.name || meal.name;
@@ -89,11 +105,12 @@ class Meal {
     const { id } = req.params;
     for (let i = 0; i < mealsDb.length; i += 1) {
       if (parseInt(mealsDb[i].id, 10) === parseInt(id, 10)) {
-        mealsDb.splice(i, 1);
+        const deletedMeal = mealsDb.splice(i, 1);
         return res.status(200)
           .json({
             status: 'successfully deleted',
-            message: 'meal has been deleted'
+            message: 'meal has been deleted',
+            deletedMeal
           });
       }
     }

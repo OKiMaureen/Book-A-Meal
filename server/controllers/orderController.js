@@ -1,4 +1,5 @@
 import menuDb from '../model/menu';
+import mealDb from '../model/meal';
 import ordersDb from '../model/order';
 /**
  * class Order controls all order methods
@@ -21,12 +22,7 @@ class Order {
     if (menuForTheDay) {
       const id = ordersDb.length + 1;
       const { mealIds } = req.body;
-      mealIds.forEach((mealId) => {
-        if (mealId > mealIds.length) {
-          return res.status(404).json({ status: 'fail', message: 'The meal id below is not available', id: mealId });
-        }
-      });
-      const meals = mealIds.map(mealId => menuForTheDay.meals.find(meal => meal.id === mealId));
+      const meals = mealIds.map(mealId => mealDb.find(meal => meal.id === mealId));
       const order = {
         id,
         meals
@@ -49,15 +45,10 @@ class Order {
     }
     if (menuForTheDay) {
       const { mealIds } = req.body;
-      mealIds.forEach((mealId) => {
-        if (mealId > mealIds.length) {
-          return res.status(404).json({ status: 'fail', message: 'The meal id below is not available', id: mealId });
-        }
-      });
       let putOrder;
       ordersDb.forEach((order) => {
         if (order.id === parseInt(req.params.id, 10)) {
-          order.meals = mealIds.map(mealId => menuForTheDay.meals.find(meal => meal.id === mealId));
+          order.meals = mealIds.map(mealId => mealDb.find(meal => meal.id === mealId));
           putOrder = order;
         }
       });
