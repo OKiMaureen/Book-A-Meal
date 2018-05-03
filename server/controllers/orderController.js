@@ -12,7 +12,7 @@ class Order {
    * @returns {json} adds new order
    * @memberof Order
    */
-  postOrder(req, res) {
+  addOrder(req, res) {
     const todaysDate = (new Date()).toLocaleDateString();
     const menuForTheDay = menuDb.find(menu => menu.date === todaysDate);
     if (!menuForTheDay) {
@@ -42,7 +42,7 @@ class Order {
    * @returns {json} updates order
    * @memberof Order
    */
-  putOrder(req, res) {
+  updateOrder(req, res) {
     const todaysDate = (new Date()).toLocaleDateString();
     const menuForTheDay = menuDb.find(menu => menu.date === todaysDate);
     if (!menuForTheDay) {
@@ -92,7 +92,7 @@ class Order {
    * @returns {json} gets all orders
    * @memberof Order
    */
-  getOrder(req, res) {
+  getOrders(req, res) {
     let total = 0;
     ordersDb.forEach((order) => {
       order.meals.forEach((meal) => {

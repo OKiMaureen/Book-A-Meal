@@ -12,7 +12,7 @@ class Menu {
    * @returns {json} adds new menu
    * @memberof Menu
    */
-  postMenu(req, res) {
+  addMenu(req, res) {
     const todaysDate = (new Date()).toLocaleDateString();
     const { mealIds } = req.body;
     if (!req.body.date) {

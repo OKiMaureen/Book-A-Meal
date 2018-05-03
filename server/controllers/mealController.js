@@ -11,7 +11,7 @@ class Meal {
    * @returns {json} it gets all meals
    * @memberof Meal
    */
-  getAllMeal(req, res) {
+  getAllMeals(req, res) {
     res.status(200).json({
       meals: mealsDb,
       status: 'success'
@@ -24,7 +24,7 @@ class Meal {
    * @returns {json} adds new meal
    * @memberof Meal
    */
-  postMeal(req, res) {
+  addMeal(req, res) {
     const { category, name, price } = req.body;
     const id = mealsDb.length + 1;
     const meal = {
@@ -48,7 +48,7 @@ class Meal {
    * @returns {json} updates meal
    * @memberof Meal
    */
-  putMeal(req, res) {
+  updateMeal(req, res) {
     const { id } = req.params;
     let putMeal;
     mealsDb.forEach((meal) => {
