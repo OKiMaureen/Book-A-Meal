@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,144 +10,128 @@
   <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
   <!--font awesome -->
   <script src="fontawesome-all.js"></script>
-  </head>
-
-  <body>
-    <header>
-      <nav>
-        <div class="nav-container">
-          <div class="btn">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="btn">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
         </div>
+      </div>
+      <ul>
+        <div class="logo">Book-A-Meal</div>
+        <li>
+          <a href="index.html">home</a>
+        </li>
+        <li>
+          <a href="meal.html">Create Meal</a>
+        </li>
+        <li>
+          <a href="#my-meals">My Meals</a>
+        </li>
+        <li>
+          <a href="createmenu.html">Set Menu</a>
+        </li>
+        <li>
+          <a href="order.html">Orders</a>
+        </li>
+        <li>
+          <a href="#" onclick="">Sign Out</a>
+        </li>
+      </ul>
 
-        <ul>
-          <div class="logo">Book-A-Meal</div>
-          <li>
-            <a href="index.html">home</a>
-          </li>
-          <li>
-            <a href="meal.html">Create Meal</a>
-          </li>
-          <li>
-            <a href="#my-meals">My Meals</a>
-          </li>
-          <li>
-            <a href="createmenu.html">Set Menu</a>
-          </li>
-          <li>
-            <a href="order.html">Orders</a>
-          </li>
-          <li>
-              <a href="#" onclick="">Sign Out</a>
-          </li>
-        </ul>
+    </nav>
 
-      </nav>
+  </header>
+  <!-- Header End-->
 
-    </header>
-    <!-- Header End-->
+  <!--  Modify Meal  -->
+  <section class="meal">
+    <article class="card">
+      <form>
+        <h3>Modify Meal</h3>
+        <select>
+          <option value="category">Category</option>
+          <option value="swallow">Swallow</option>
+          <option value="soup">Soup</option>
+          <option value="drink">Drink</option>
+        </select>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="price" placeholder="Price">
+        <button type="submit" class="form-btn">Update</button>
+      </form>
+    </article>
+  </section>
+  <!-- modify Meal End  -->
 
-    <!--  Modify Meal  -->
-    <section class="meal">
-      <article class="card">
-        <form>
-          <h3>Modify Meal</h3>
-          <select>
-            <option value="category">Category</option>
-            <option value="swallow">Swallow</option>
-            <option value="soup">Soup</option>
-            <option value="drink">Drink</option>
-          </select>
-          <input type="text" id="name" placeholder="Name">
-          <input type="text" id="price" placeholder="Price">
-          <button type="submit" class="form-btn">Update</button>
-        </form>
-      </article>
-    </section>
-    <!-- modify Meal End  -->
-
-    <!-- My Meals -->
-    <section class="my-meals" id="my-meals">
-      <h3>My Meals</h3>
-      <div class="meals">
-        <div class="meal-card">
-          <img src="images/amala.jpg" alt="amala" style="width:100%">
-          <div class="card-container">
-            <h4>
-              <b>Swallow</b>
-            </h4>
-            <hr/>
-            <p>Amala</p>
-            <hr/>
-            <p>N100</p>
-            <hr/>
-            <div style="margin-top:10px;">
-                <a class="meal-button" href="modifymeal.html">modify</a>
-                <a class="meal-button">delete</a>
-            </div>
-          </div>
-        </div>
-        <div class="meal-card">
-          <img src="images/vegetable.jpg" alt="vegetable soup" style="width:100%">
-          <div class="card-container">
-            <h4>
-              <b>Soup</b>
-            </h4>
-            <hr/>
-            <p>Oha</p>
-            <hr/>
-            <p>N300</p>
-            <hr/>
-            <div style="margin-top:10px;">
-                <a class="meal-button" href="modifymeal.html">modify</a>
-                <a class="meal-button">delete</a>
-            </div>
-          </div>
-        </div>
-        <div class="meal-card">
-          <img src="images/semo.jpg" alt="pounded yam" style="width:100%">
-          <div class="card-container">
-            <h4>
-              <b>Swallow</b>
-            </h4>
-            <hr/>
-            <p>Pounded yam</p>
-            <hr/>
-            <p>N200</p>
-            <hr/>
-            <div style="margin-top:10px;">
-                <a class="meal-button" href="modifymeal.html">modify</a>
-                <a class="meal-button">delete</a>
-            </div>
+  <!-- My Meals -->
+  <section class="my-meals" id="my-meals">
+    <h3>My Meals</h3>
+    <div class="meals">
+      <div class="meal-card">
+        <img src="images/amala.jpg" alt="amala" style="width:100%">
+        <div class="card-container">
+          <h4>
+            <b>Swallow</b>
+          </h4>
+          <hr/>
+          <p>Amala</p>
+          <hr/>
+          <p>N100</p>
+          <hr/>
+          <div style="margin-top:10px;">
+            <a class="meal-button" href="modifymeal.html">modify</a>
+            <a class="meal-button">delete</a>
           </div>
         </div>
       </div>
-
-    </section>
-
-
-    <!-- My Meals End -->
-
-
-
-    <!--Footer Section -->
-    <footer>
-      <p>copyright&copy;Book-A-meal 2018. All rights reserved.</p>
-    </footer>
-
-
-    <!--Footer Section End -->
-
-
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-
-  </body>
-
+      <div class="meal-card">
+        <img src="images/vegetable.jpg" alt="vegetable soup" style="width:100%">
+        <div class="card-container">
+          <h4>
+            <b>Soup</b>
+          </h4>
+          <hr/>
+          <p>Oha</p>
+          <hr/>
+          <p>N300</p>
+          <hr/>
+          <div style="margin-top:10px;">
+            <a class="meal-button" href="modifymeal.html">modify</a>
+            <a class="meal-button">delete</a>
+          </div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <img src="images/semo.jpg" alt="pounded yam" style="width:100%">
+        <div class="card-container">
+          <h4>
+            <b>Swallow</b>
+          </h4>
+          <hr/>
+          <p>Pounded yam</p>
+          <hr/>
+          <p>N200</p>
+          <hr/>
+          <div style="margin-top:10px;">
+            <a class="meal-button" href="modifymeal.html">modify</a>
+            <a class="meal-button">delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- My Meals End -->
+  
+  <!--Footer Section -->
+  <footer>
+    <p>copyright&copy;Book-A-meal 2018. All rights reserved.</p>
+  </footer>
+  <!--Footer Section End -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
