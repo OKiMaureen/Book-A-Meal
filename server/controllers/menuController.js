@@ -15,10 +15,7 @@ class Menu {
   addMenu(req, res) {
     const todaysDate = (new Date()).toLocaleDateString();
     const { mealIds } = req.body;
-    if (!req.body.date) {
-      return res.status(400).json({ message: 'date is required', error: true });
-    }
-    const menuDateExisting = menuDb.find(menu => menu.date === req.body.date);
+    const menuDateExisting = menuDb.find(menu => menu.date === todaysDate);
     if (menuDateExisting) {
       return res.status(400).json({ message: 'date is already existing', error: true });
     }

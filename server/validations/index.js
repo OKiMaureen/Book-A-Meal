@@ -10,24 +10,24 @@ export const mealValidator = (req, res, next) => {
   } = req.body;
   const error = {};
   // check if category is empty
-  if (!category) {
+  if (!category || category.length === 0) {
     error.category = 'category is required';
   }
-  if (category && validator.isEmpty(category || '')) {
+  if (category && validator.isEmpty(category)) {
     error.category = 'category is required';
   }
   // check if meal name is empty
-  if (!name) {
+  if (!name || name.length === 0) {
     error.name = 'name is required';
   }
-  if (name && validator.isEmpty(name || '')) {
+  if (name && validator.isEmpty(name)) {
     error.name = 'name is required';
   }
   // check if price is empty
-  if (!price) {
+  if (!price || price.length === 0) {
     error.price = 'price is required';
   }
-  if (price && validator.isEmpty(price || '')) {
+  if (price && validator.isEmpty(price)) {
     error.price = 'price is required';
   }
   if (isEmpty(error)) return next();
