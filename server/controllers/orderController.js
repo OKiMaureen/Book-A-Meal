@@ -48,7 +48,7 @@ class Order {
     if (!menuForTheDay) {
       return res.status(404).json({
         status: 'fail',
-        message: todaysDate
+        message: 'cannot find menu for the day'
       });
     }
     if (menuForTheDay) {
