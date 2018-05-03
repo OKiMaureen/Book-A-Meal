@@ -12,7 +12,13 @@ class Meal {
    * @memberof Meal
    */
   getAllMeals(req, res) {
-    res.status(200).json({
+    if (mealsDb.length === 0) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'no meal available'
+      });
+    }
+    return res.status(200).json({
       meals: mealsDb,
       status: 'success'
     });
