@@ -11,8 +11,14 @@ class Meal {
    * @returns {json} it gets all meals
    * @memberof Meal
    */
-  getAllMeal(req, res) {
-    res.status(200).json({
+  getAllMeals(req, res) {
+    if (mealsDb.length === 0) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'no meal available'
+      });
+    }
+    return res.status(200).json({
       meals: mealsDb,
       status: 'success'
     });
@@ -24,9 +30,18 @@ class Meal {
    * @returns {json} adds new meal
    * @memberof Meal
    */
-  postMeal(req, res) {
+  addMeal(req, res) {
     const { category, name, price } = req.body;
     const id = mealsDb.length + 1;
+    mealsDb.forEach((meal) => {
+      if (req.body.name === meal.name) {
+        return res.status(404)
+          .json({
+            status: 'fail',
+            message: 'meal name already exists, add another meal',
+          });
+      }
+    });
     const meal = {
       id,
       category,
@@ -48,10 +63,17 @@ class Meal {
    * @returns {json} updates meal
    * @memberof Meal
    */
-  putMeal(req, res) {
+  updateMeal(req, res) {
     const { id } = req.params;
     let putMeal;
     mealsDb.forEach((meal) => {
+      if (req.body.name === meal.name) {
+        return res.status(400).json({
+          status: 'fail',
+          message: 'meal name already exists, add another meal',
+          meal: putMeal
+        });
+      }
       if (meal.id === parseInt(id, 10)) {
         meal.category = req.body.category || meal.category;
         meal.name = req.body.name || meal.name;
@@ -60,13 +82,9 @@ class Meal {
       }
     });
     if (putMeal) {
-      return res.status(200).json({
-        status: 'successfully updated',
-        message: 'meal updated',
-        meal: putMeal
-      });
+      return res.status(200).json({ status: 'successfully updated', message: 'meal updated', meal: putMeal });
     }
-    return res.status(400).send(`cannot find meal with id ${id}`);
+    return res.status(404).json({ status: 'meal not updated', message: 'cannot find meal', id });
   }
   /**
    * DELETE a meal
@@ -76,17 +94,23 @@ class Meal {
    * @memberof Meal
    */
   deleteMeal(req, res) {
+    const { id } = req.params;
     for (let i = 0; i < mealsDb.length; i += 1) {
-      if (parseInt(mealsDb[i].id, 10) === parseInt(req.params.id, 10)) {
-        mealsDb.splice(i, 1);
+      if (parseInt(mealsDb[i].id, 10) === parseInt(id, 10)) {
+        const deletedMeal = mealsDb.splice(i, 1);
         return res.status(200)
           .json({
             status: 'successfully deleted',
-            message: 'meal has been deleted'
+            message: 'meal has been deleted',
+            deletedMeal
           });
       }
     }
-    return res.status(404).send('Meal not found');
+    return res.status(404).json({
+      status: 'meal not deleted',
+      message: 'cannot find meal',
+      id
+    });
   }
 }
 const mealController = new Meal();

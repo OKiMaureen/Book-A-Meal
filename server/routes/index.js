@@ -19,22 +19,22 @@ const routes = (app) => {
   });
 
   // get of all meals
-  app.get('/api/v1/meals', mealsController.getAllMeal);
+  app.get('/api/v1/meals', mealsController.getAllMeals);
   // post meals
-  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.postMeal);
+  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.addMeal);
   // update meals
-  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.putMeal);
+  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.updateMeal);
   // delete meals
   app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
   // post menu
-  app.post('/api/v1/menu', menuController.postMenu);
+  app.post('/api/v1/menu', menuController.addMenu);
   // get menu
   app.get('/api/v1/menu', menuController.getMenu);
   // post order
-  app.post('/api/v1/orders', ordersController.postOrder);
+  app.post('/api/v1/orders', ordersController.addOrder);
   // put order
-  app.put('/api/v1/orders/:id', ordersController.putOrder);
+  app.put('/api/v1/orders/:id', ordersController.updateOrder);
   // get order
-  app.get('/api/v1/orders', ordersController.getOrder);
+  app.get('/api/v1/orders', ordersController.getOrders);
 };
 export default routes;

@@ -158,11 +158,24 @@ describe('Update Meal', () => {
         price: '500'
       })
       .end((err, res) => {
-        expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('successfully updated');
-        expect(res.body).to.have.property('message').equal('meal updated');
-        expect(res.body).to.have.property('meal');
+        done();
+      });
+  });
+  it('Should return 400 if meal already exists', (done) => {
+    chai.request(app)
+      .put('/api/v1/meals/1')
+      .send({
+        id: 1,
+        category: 'Swallow',
+        name: 'Amala',
+        price: '500'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status').equal('fail');
+        expect(res.body).to.have.property('message').equal('meal name already exists, add another meal');
         done();
       });
   });
@@ -217,28 +230,13 @@ describe('Add menu', () => {
     chai.request(app)
       .post(`${menuURL}`)
       .send({
-        date: '2018-4-29',
         mealIds: [1, 2, 3]
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('successfully updated');
+        expect(res.body).to.have.property('status').equal('successfully added menu');
         expect(res.body).to.have.property('message').equal('menu added');
-        done();
-      });
-  });
-  it('Should return 400 for a menu post without date', (done) => {
-    chai.request(app)
-      .post(`${menuURL}`)
-      .send({
-        date: '',
-        mealIds: [1, 2, 3]
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message').equal('date is required');
         done();
       });
   });
@@ -285,6 +283,16 @@ describe('Add order', () => {
       });
   });
 });
+describe('Get orders', () => {
+  it('should get all orders', (done) => {
+    chai.request(app)
+      .get(`${orderURL}`)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+});
 describe('Update Order', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
@@ -304,21 +312,14 @@ describe('Update Order', () => {
   it('should not update a order that does not exist', (done) => {
     chai.request(app)
       .put('/api/v1/orders/10')
+      .send({
+        mealIds: [1, 2, 3]
+      })
       .end((err, res) => {
         expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
-        done();
-      });
-  });
-});
-describe('Get orders', () => {
-  it('should get all orders', (done) => {
-    chai.request(app)
-      .get(`${orderURL}`)
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('success');
+        expect(res.body).to.have.property('status').equal('fail');
+        expect(res.body).to.have.property('message').equal('cannot find order');
         done();
       });
   });
