@@ -82,17 +82,9 @@ class Meal {
       }
     });
     if (putMeal) {
-      return res.status(200).json({
-        status: 'successfully updated',
-        message: 'meal updated',
-        meal: putMeal
-      });
+      return res.status(200).json({ status: 'successfully updated', message: 'meal updated', meal: putMeal });
     }
-    return res.status(404).json({
-      status: 'meal not updated',
-      message: 'cannot find meal',
-      id
-    });
+    return res.status(404).json({ status: 'meal not updated', message: 'cannot find meal', id });
   }
   /**
    * DELETE a meal
