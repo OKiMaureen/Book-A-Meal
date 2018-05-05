@@ -17,21 +17,19 @@ class Menu {
     const { mealIds } = req.body;
     const menuDateExisting = menuDb.find(menu => menu.date === todaysDate);
     if (menuDateExisting) {
-      return res.status(400).json({ message: 'date is already existing', error: true });
+      return res.status(409).json({ message: 'date is already existing', error: true });
     }
-    const meals = mealIds.map(mealId => mealsDb.find(meal => meal.id === mealId));
+    const meals = [];
+    mealIds.forEach(mealId => meals.push(...mealsDb.filter(meal => meal.id === mealId)));
     const menu = {
       date: todaysDate,
       meals
     };
     menuDb.push(menu);
-    return res.status(201)
-      .json({
-        status: 'successfully added menu',
-        message: 'menu added',
-        menu
-      });
+    return res.status(201).json({ status: 'successfully added menu', message: 'menu added', menu });
   }
+
+
   /**
    * GET menu
    * @param {any} req
@@ -49,8 +47,8 @@ class Menu {
       });
     }
     if (!foundDate) {
-      return res.status(400).json({
-        status: 'no menu for the day yet',
+      return res.status(200).json({
+        status: 'no meal set up for the day',
       });
     }
   }

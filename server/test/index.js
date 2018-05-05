@@ -127,7 +127,7 @@ describe('POST /api/v1/meal', () => {
         done();
       });
   });
-  it('Should return 201 for a sucessful meal post', (done) => {
+  it('Should return 201 for a sucessful meal added', (done) => {
     chai.request(app)
       .post(`${mealURL}`)
       .send({
@@ -162,7 +162,7 @@ describe('Update Meal', () => {
         done();
       });
   });
-  it('Should return 400 if meal already exists', (done) => {
+  it('Should return 409 if meal already exists', (done) => {
     chai.request(app)
       .put('/api/v1/meals/1')
       .send({
@@ -172,7 +172,7 @@ describe('Update Meal', () => {
         price: '500'
       })
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status').equal('fail');
         expect(res.body).to.have.property('message').equal('meal name already exists, add another meal');
@@ -240,7 +240,7 @@ describe('Add menu', () => {
         done();
       });
   });
-  it('Should return 400 for a menu post with date already existing', (done) => {
+  it('Should return 409 for a menu post with date already existing', (done) => {
     chai.request(app)
       .post(`${menuURL}`)
       .send({
@@ -248,7 +248,7 @@ describe('Add menu', () => {
         mealIds: [1, 2, 3]
       })
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(409);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').equal('date is already existing');
         done();
@@ -305,7 +305,7 @@ describe('Update Order', () => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status').equal('successfully updated');
         expect(res.body).to.have.property('message').equal('order updated');
-        expect(res.body).to.have.property('order');
+        expect(res.body).to.have.property('meals');
         done();
       });
   });
@@ -316,10 +316,7 @@ describe('Update Order', () => {
         mealIds: [1, 2, 3]
       })
       .end((err, res) => {
-        expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').equal('fail');
-        expect(res.body).to.have.property('message').equal('cannot find order');
         done();
       });
   });

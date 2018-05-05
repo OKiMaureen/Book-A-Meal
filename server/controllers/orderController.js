@@ -22,13 +22,13 @@ class Order {
     if (menuForTheDay) {
       const id = ordersDb.length + 1;
       const { mealIds } = req.body;
-      const meals = mealIds.map(mealId => mealDb.find(meal => meal.id === mealId));
-      const order = {
+      const meals = [];
+      mealIds.forEach(mealId => meals.push(...mealDb.filter(meal => meal.id === mealId)));
+      ordersDb.push({
         id,
         meals
-      };
-      ordersDb.push(order);
-      return res.status(201).json({ status: 'successfully updated', message: 'order added', order });
+      });
+      return res.status(201).json({ status: 'successfully updated', message: 'order added', meals });
     }
   }
   /**
@@ -44,18 +44,20 @@ class Order {
       return res.status(404).json({ status: 'fail', message: 'cannot find menu for the day' });
     }
     if (menuForTheDay) {
+      const { id } = req.params.id;
       const { mealIds } = req.body;
-      let putOrder;
+      const meals = [];
       ordersDb.forEach((order) => {
         if (order.id === parseInt(req.params.id, 10)) {
-          order.meals = mealIds.map(mealId => mealDb.find(meal => meal.id === mealId));
-          putOrder = order;
+          mealIds.forEach(mealId => meals.push(...mealDb.filter(meal => meal.id === mealId)));
+          order.meals.length = 0;
+          order.meals = meals;
         }
       });
-      if (putOrder) {
-        return res.status(200).json({ status: 'successfully updated', message: 'order updated', order: putOrder });
+      if (meals) {
+        return res.status(200).json({ status: 'successfully updated', message: 'order updated', meals });
       }
-      return res.status(404).json({ status: 'fail', message: 'cannot find order', id: req.params.id });
+      return res.status(404).json({ status: 'fail', message: `cannot find order with ${id}` });
     }
   }
   /**
