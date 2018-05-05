@@ -41,7 +41,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "jscoverage": "^0.6.0",
-    "nodemon": "^1.17.3",
-    "nodeunit": "^0.11.2"
+    "nodemon": "^1.17.3"
   }
 }

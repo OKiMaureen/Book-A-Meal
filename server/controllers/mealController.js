@@ -13,9 +13,9 @@ class Meal {
    */
   getAllMeals(req, res) {
     if (mealsDb.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         status: 'fail',
-        message: 'no meal available'
+        message: 'meal not set yet'
       });
     }
     return res.status(200).json({
@@ -35,7 +35,7 @@ class Meal {
     const id = mealsDb.length + 1;
     mealsDb.forEach((meal) => {
       if (req.body.name === meal.name) {
-        return res.status(404)
+        return res.status(409)
           .json({
             status: 'fail',
             message: 'meal name already exists, add another meal',
@@ -68,10 +68,9 @@ class Meal {
     let putMeal;
     mealsDb.forEach((meal) => {
       if (req.body.name === meal.name) {
-        return res.status(400).json({
+        return res.status(409).json({
           status: 'fail',
-          message: 'meal name already exists, add another meal',
-          meal: putMeal
+          message: 'meal name already exists, add another meal'
         });
       }
       if (meal.id === parseInt(id, 10)) {
@@ -84,7 +83,7 @@ class Meal {
     if (putMeal) {
       return res.status(200).json({ status: 'successfully updated', message: 'meal updated', meal: putMeal });
     }
-    return res.status(404).json({ status: 'meal not updated', message: 'cannot find meal', id });
+    return res.status(404).json({ status: 'meal not updated', message: `cannot find meal with ${id}` });
   }
   /**
    * DELETE a meal
@@ -108,7 +107,7 @@ class Meal {
     }
     return res.status(404).json({
       status: 'meal not deleted',
-      message: 'cannot find meal',
+      message: `cannot find meal with ${id}`,
       id
     });
   }

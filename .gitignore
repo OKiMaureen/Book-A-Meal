@@ -1,5 +1,4 @@
 server/dist/
 coverage/
 node_modules/
-.coveralls.yml
 .nyc_output/
