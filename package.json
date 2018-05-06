@@ -1,7 +1,7 @@
 {
   "name": "book-a-meal",
   "version": "1.0.0",
-  "description": "An andela cycle 31 project",
+  "description": "An Andela cycle 31 project",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch server --exec babel-node server/app.js",
