@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/OKiMaureen/Book-A-Meal#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
@@ -28,6 +29,7 @@
     "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
     "lodash.isempty": "^4.4.0",
     "mocha": "^5.1.1",
     "mocha-lcov-reporter": "^1.3.0",

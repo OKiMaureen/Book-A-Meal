@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   MealMenu.associate = (models) => {
     // associations can be defined here
     MealMenu.hasMany(models.Meal);
-    MealMenu.hasMany(models.Order);
+    MealMenu.hasMany(models.Menu);
   };
   return MealMenu;
 };

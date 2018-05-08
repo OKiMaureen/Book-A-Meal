@@ -1,15 +1,22 @@
 // Import meal controller
 import mealsController from '../controllers/mealController';
+// Import meal controller
+import ordersController from '../controllers/orderController';
 // Import menu controller
 import menuController from '../controllers/menuController';
-// Import order controller
-import ordersController from '../controllers/orderController';
+// Import user controller
+import userController from '../controllers/userController';
 
 import {
   mealValidator,
   verifyMealLength,
   verifyMealNumber
 } from '../validations';
+import {
+  validateSignin,
+  validateSignup,
+  validateUserLength
+} from '../validations/userValidation';
 
 const routes = (app) => {
   // default route
@@ -17,7 +24,9 @@ const routes = (app) => {
     res.status(200)
       .send('Welcome to Book-A-Meal API');
   });
-
+  app.post('/api/v1/auth/signup', validateSignup, validateUserLength, userController.registerUser);
+  // log in registered user
+  app.post('/api/v1/auth/login', validateSignin, userController.loginUser);
   // get of all meals
   app.get('/api/v1/meals', mealsController.getAllMeals);
   // post meals
