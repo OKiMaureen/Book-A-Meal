@@ -1,116 +1,192 @@
-import mealsDb from '../model/meal';
+import pick from 'lodash.pick';
+import db from '../models';
+
+const { Meal } = db;
+
 /**
- * class Meal controls all meals methods
- * @class Meal
+ * @class mealController
+ *
+ * @export
+ *
  */
-class Meal {
+export default class mealController {
   /**
-   * GET all  meals
-   * @param {any} req
-   * @param {any} res
-   * @returns {json} it gets all meals
-   * @memberof Meal
+   * @description - Add a new meal
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof mealController
+   *
+   * @returns {object} Class instance
    */
-  getAllMeals(req, res) {
-    if (mealsDb.length === 0) {
-      return res.status(200).json({
-        status: 'fail',
-        message: 'meal not set yet'
-      });
+  static addMeal(req, res) {
+    const userRole = pick(req.user, ['role']);
+    if (userRole.role !== 'admin') {
+      return res.status(401).send();
     }
-    return res.status(200).json({
-      meals: mealsDb,
-      status: 'success'
-    });
-  }
-  /**
-   * POST a new meal
-   * @param {any} req
-   * @param {any} res
-   * @returns {json} adds new meal
-   * @memberof Meal
-   */
-  addMeal(req, res) {
-    const { category, name, price } = req.body;
-    const id = mealsDb.length + 1;
-    mealsDb.forEach((meal) => {
-      if (req.body.name === meal.name) {
-        return res.status(409)
-          .json({
-            status: 'fail',
-            message: 'meal name already exists, add another meal',
+
+    const {
+      category, name, price, image
+    } = req.body;
+
+    Meal.findOne({
+      where: {
+        name
+      }
+    })
+      .then((existingMeal) => {
+        if (existingMeal) {
+          return res.status(400)
+            .json({
+              status: 'fail',
+              message: 'this meal already exists'
+            });
+        }
+        return Meal.create({
+          category,
+          name,
+          price,
+          image,
+          userId: req.user.id
+        })
+          .then((newMeal) => {
+            const mealDetails = pick(newMeal, ['category', 'name', 'price', 'image']);
+            res.status(201)
+              .json({
+                status: 'success',
+                message: 'Meal created successfully',
+                meal: mealDetails
+              });
           });
-      }
-    });
-    const meal = {
-      id,
-      category,
-      name,
-      price
-    };
-    mealsDb.push(meal);
-    return res.status(201)
-      .json({
-        status: 'successfully updated',
-        message: 'meal added',
-        meal
       });
   }
   /**
-   * PUT a new meal
-   * @param {any} req
-   * @param {any} res
-   * @returns {json} updates meal
-   * @memberof Meal
+   * @description - get all meals
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof mealController
+   *
+   * @returns {object} Class instance
    */
-  updateMeal(req, res) {
-    const { id } = req.params;
-    let putMeal;
-    mealsDb.forEach((meal) => {
-      if (req.body.name === meal.name) {
-        return res.status(409).json({
-          status: 'fail',
-          message: 'meal name already exists, add another meal'
-        });
-      }
-      if (meal.id === parseInt(id, 10)) {
-        meal.category = req.body.category || meal.category;
-        meal.name = req.body.name || meal.name;
-        meal.price = req.body.price || meal.location;
-        putMeal = meal;
-      }
-    });
-    if (putMeal) {
-      return res.status(200).json({ status: 'successfully updated', message: 'meal updated', meal: putMeal });
+  static getAllMeals(req, res) {
+    const userRole = pick(req.user, ['role']);
+    if (userRole.role !== 'admin') {
+      return res.status(401).send();
     }
-    return res.status(404).json({ status: 'meal not updated', message: `cannot find meal with ${id}` });
+    return Meal.findAll()
+      .then(foundMeal => res.status(200).send(foundMeal))
+      .catch(error => res.status(400).send(error));
   }
   /**
-   * DELETE a meal
-   * @param {any} req
-   * @param {any} res
-   * @returns {json} deletes a meal
-   * @memberof Meal
+   * @description - Update a meal
+   * @static
+   *
+   * @param {object} req - HTTP Request
+   * @param {object} res - HTTP Response
+   *
+   * @memberof mealController
+   *
+   * @returns {object} Class instance
    */
-  deleteMeal(req, res) {
-    const { id } = req.params;
-    for (let i = 0; i < mealsDb.length; i += 1) {
-      if (parseInt(mealsDb[i].id, 10) === parseInt(id, 10)) {
-        const deletedMeal = mealsDb.splice(i, 1);
-        return res.status(200)
-          .json({
-            status: 'successfully deleted',
-            message: 'meal has been deleted',
-            deletedMeal
-          });
-      }
+  static updateMeal(req, res) {
+    const userRole = pick(req.user, ['role']);
+    if (userRole.role !== 'admin') {
+      return res.status(401).send();
     }
-    return res.status(404).json({
-      status: 'meal not deleted',
-      message: `cannot find meal with ${id}`,
-      id
-    });
+    Meal.findOne({
+      where: {
+        name: req.body.name
+      }
+    })
+      .then((existingMeal) => {
+        if (existingMeal) {
+          return res.status(400)
+            .json({
+              status: 'fail',
+              message: 'this meal already exists'
+            });
+        }
+        return Meal.findOne({
+          where: {
+            id: req.params.id
+          }
+        })
+          .then((foundMeal) => {
+            if (!foundMeal) {
+              res.status(404).json({
+                status: 'fail',
+                message: `Meal id  ${req.params.id} not found`
+              });
+            }
+            return foundMeal.update({
+              category: req.body.category || Meal.category,
+              name: req.body.name || Meal.name,
+              price: req.body.price || Meal.price,
+              image: req.body.image || Meal.image,
+
+            });
+          }).then((updatedMeal) => {
+            const mealDetails = pick(updatedMeal, ['category', 'name', 'price', 'image']);
+            res.status(201)
+              .json({
+                status: 'success',
+                message: 'Meal updated successfully',
+                meal: mealDetails
+              });
+          });
+      });
+  }
+  /**
+ * @description - Delete an Meal
+ * @static
+ *
+ * @param {object} req - HTTP Request
+ * @param {object} res - HTTP Response
+ *
+ * @memberof mealController
+ *
+ * @returns {object} Class instance
+ */
+  static deleteMeal(req, res) {
+    const userRole = pick(req.user, ['role']);
+    if (userRole.role !== 'admin') {
+      return res.status(401).send();
+    }
+    Meal.findOne({
+      where: {
+        id: req.params.id,
+      }
+    })
+      .then((foundMeal) => {
+        if (!foundMeal) {
+          return res.status(404)
+            .json({
+              status: 'fail',
+              message: `Can't find meal with id ${req.params.id} `
+            });
+        }
+        if (foundMeal) {
+          foundMeal.destroy({
+            where: {
+              id: req.params.id,
+            }
+          })
+            .then(() => res.status(200)
+              .json({
+                status: 'success',
+                message: `Meal with ${req.params.id} deleted`,
+              }));
+        }
+      })
+      .catch(() => res.status(500).json({
+        status: 'error',
+        message: 'Internal server error'
+      }));
   }
 }
-const mealController = new Meal();
-export default mealController;
+
