@@ -27,10 +27,16 @@ export const validateSignin = (req, res, next) => {
 
 export const validateSignup = (req, res, next) => {
   const {
-    email, password
+    email, password, name
   } = req.body;
   const error = {};
+  if (!name) {
+    error.name = 'Name is required';
+  }
 
+  if (name && Validator.isEmpty(name.trim() || '')) {
+    error.name = 'Name is required';
+  }
   if (!password) {
     error.password = 'Password is required';
   }
