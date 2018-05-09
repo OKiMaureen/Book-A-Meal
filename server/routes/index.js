@@ -39,7 +39,7 @@ const routes = (app) => {
   // post menu
   app.post('/api/v1/menu', authenticate, menuController.addMenu);
   // get menu
-  //app.get('/api/v1/menu', authenticate, menuController.getMenu);
+  app.get('/api/v1/menu', authenticate, menuController.getMenu);
   // post order
   app.post('/api/v1/orders', authenticate, ordersController.addOrder);
   // put order

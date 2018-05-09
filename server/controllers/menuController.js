@@ -1,6 +1,4 @@
-import db from '../models';
-
-const { Meal, Menu } = db;
+import { Menu } from '../models';
 
 /**
  * class Menu controls all menu methods
@@ -34,5 +32,4 @@ export default class menuController {
       });
     });
   }
-
 }

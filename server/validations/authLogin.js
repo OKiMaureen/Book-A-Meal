@@ -34,7 +34,6 @@ const secretKey = process.env.JWT_SECRET;
 
 const authenticate = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
-
   try {
     const verifiedToken = jwt.verify(token, secretKey);
     req.decoded = verifiedToken;
@@ -46,7 +45,10 @@ const authenticate = (req, res, next) => {
         return;
       }
       req.user = user;
-
+      const { role } = req.user;
+      if (role !== 'admin') {
+        return res.status(401).send();
+      }
       next();
     });
   } catch (error) {
