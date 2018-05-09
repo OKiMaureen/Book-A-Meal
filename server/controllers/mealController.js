@@ -22,8 +22,8 @@ export default class mealController {
    * @returns {object} Class instance
    */
   static addMeal(req, res) {
-    const userRole = pick(req.user, ['role']);
-    if (userRole.role !== 'admin') {
+    const { role } = req.user;
+    if (role !== 'admin') {
       return res.status(401).send();
     }
 

@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('MealMenus', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('MealOrders', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -7,10 +7,12 @@ module.exports = {
       type: Sequelize.INTEGER
     },
     mealId: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
-    menuId: {
-      type: Sequelize.STRING
+    orderId: {
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     createdAt: {
       allowNull: false,
@@ -21,5 +23,5 @@ module.exports = {
       type: Sequelize.DATE
     }
   }),
-  down: queryInterface => queryInterface.dropTable('MealMenus')
+  down: queryInterface => queryInterface.dropTable('MealOrders')
 };
