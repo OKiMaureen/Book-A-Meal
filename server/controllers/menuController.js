@@ -32,4 +32,22 @@ export default class menuController {
       });
     });
   }
+
+  /**
+   * GET menu menu
+   * @param {any} req
+   * @param {any} res
+   * @returns {json} gets menu
+   * @memberof Menu
+   */
+  static addMenu(req, res) {
+    return Menu.findOne({where:
+      {id: req.headers.id},
+      {include: [{model:Meal}]}
+  }).then((menu) => {menu.getMeals()  res.status(200).json(
+    status: 'success',
+    message: menu
+  }))
+ 
+  }
 }
