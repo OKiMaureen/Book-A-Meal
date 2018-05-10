@@ -41,15 +41,6 @@ module.exports = {
         as: 'menuId'
       }
     },
-    MealOrderMealId: {
-      type: Sequelize.INTEGER,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'MealOrders',
-        key: 'id',
-        as: 'mealOrderMealId'
-      }
-    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE

@@ -6,6 +6,14 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
+    quantity: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    amount: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     userId: {
       type: Sequelize.INTEGER,
       allowNull: false,
