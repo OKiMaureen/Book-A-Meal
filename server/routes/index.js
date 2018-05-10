@@ -17,7 +17,7 @@ import {
   validateSignup,
   validateUserLength
 } from '../validations/userValidation';
-import authenticate from '../validations/authLogin';
+import { authenticateUser, authenticateAdmin } from '../validations/authLogin';
 
 const routes = (app) => {
   // default route
@@ -28,23 +28,25 @@ const routes = (app) => {
   app.post('/api/v1/auth/signup', validateSignup, validateUserLength, userController.registerUser);
   // log in registered user
   app.post('/api/v1/auth/login', validateSignin, userController.loginUser);
-  // get of all meals
-  app.get('/api/v1/meals', authenticate, mealsController.getAllMeals);
-  // post meals
-  app.post('/api/v1/meals', authenticate, mealValidator, verifyMealLength, verifyMealNumber, mealsController.addMeal);
-  // update meals
-  app.put('/api/v1/meals/:id', authenticate, mealValidator, verifyMealLength, verifyMealNumber, mealsController.updateMeal);
-  // delete meals
-  app.delete('/api/v1/meals/:id', authenticate, mealsController.deleteMeal);
-  // post menu
-  app.post('/api/v1/menu', authenticate, menuController.addMenu);
+
   // get menu
-  app.get('/api/v1/menu', authenticate, menuController.getMenu);
+  // app.get('/api/v1/menu', authenticateUser, menuController.getMenu);
   // post order
-  app.post('/api/v1/orders', authenticate, ordersController.addOrder);
+  app.post('/api/v1/orders', authenticateUser, ordersController.addOrder);
   // put order
-  app.put('/api/v1/orders/:id', authenticate, ordersController.updateOrder);
+  // app.put('/api/v1/orders/:id', authenticateUser, ordersController.updateOrder);
   // get order
-  app.get('/api/v1/orders', authenticate, ordersController.getOrders);
+  // app.get('/api/v1/orders', authenticateUser, ordersController.getOrders);
+  app.use('*', authenticateAdmin);
+  // get of all meals
+  app.get('/api/v1/meals', mealsController.getAllMeals);
+  // post meals
+  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.addMeal);
+  // update meals
+  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.updateMeal);
+  // delete meals
+  app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
+  // post menu
+  app.post('/api/v1/menu', menuController.addMenu);
 };
 export default routes;

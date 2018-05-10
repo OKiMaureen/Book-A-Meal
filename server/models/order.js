@@ -1,12 +1,11 @@
-module.exports = (sequelize) => {
-  const Order = sequelize.define('Order', {}, {});
+module.exports = (sequelize, DataTypes) => {
+  const Order = sequelize.define('Order', { 
+    quantity: { type: DataTypes.INTEGER, allowNull: false },
+    amount: { type: DataTypes.STRING, allowNull: false },
+  });
   Order.associate = (models) => {
     // associations defined here
-    Order.belongsToMany(models.Meal, {
-      through: models.MealOrder,
-      as: 'meal',
-      foreignKey: 'orderId'
-    });
+    Order.belongsTo(models.Meal, { foreignKey: 'mealId' });
     Order.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Order;

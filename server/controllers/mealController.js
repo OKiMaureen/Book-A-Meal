@@ -1,7 +1,6 @@
 import pick from 'lodash.pick';
-import db from '../models';
+import { Meal } from '../models';
 
-const { Meal } = db;
 
 /**
  * @class mealController

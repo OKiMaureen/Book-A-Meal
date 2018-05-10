@@ -20,19 +20,20 @@ const secretKey = process.env.JWT_SECRET;
    *
    * @return {null} - null
    */
-// const authenticate = (req, res, next) => {
-//   const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
+const authenticateUser = (req, res, next) => {
+  const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
 
-//   try {
-//     const verifiedToken = jwt.verify(token, secretKey);
-//     req.userId = verifiedToken.id;
-//     return next();
-//   } catch (error) {
-//     return res.status(401).send({ message: 'you are not authorized to log in.' });
-//   }
-// };
+  try {
+    const verifiedToken = jwt.verify(token, secretKey);
+    req.userId = verifiedToken.id;
+    return next();
+  } catch (error) {
+    return res.status(401).send({ message: 'you are not authorized to log in.' });
+  }
+};
 
-const authenticate = (req, res, next) => {
+
+const authenticateAdmin = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
   try {
     const verifiedToken = jwt.verify(token, secretKey);
@@ -56,4 +57,5 @@ const authenticate = (req, res, next) => {
   }
 };
 
-export default authenticate;
+module.exports = { authenticateUser, authenticateAdmin };
+

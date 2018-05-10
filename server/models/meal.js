@@ -9,11 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Meal.belongsTo(models.Menu, { foreignKey: 'menuId' });
     Meal.belongsTo(models.User, { foreignKey: 'userId' });
-    Meal.belongsToMany(models.Order, {
-      through: models.MealOrder,
-      as: 'order',
-      foreignKey: 'mealId'
-    });
+    Meal.hasMany(models.Order, { foreignkey: 'orderId' });
+    return Meal;
   };
-  return Meal;
 };
