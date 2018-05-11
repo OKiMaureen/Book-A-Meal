@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Menu = sequelize.define('Menu', {
-    menuName: { type: DataTypes.STRING, allowNull: false }
+    menuName: { type: DataTypes.STRING, allowNull: false },
+    date: { type: DataTypes.DATEONLY, allowNull: false }
   });
   Menu.associate = (models) => {
     // associations can be defined here

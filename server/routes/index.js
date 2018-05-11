@@ -1,23 +1,19 @@
 // Import meal controller
 import mealsController from '../controllers/mealController';
 // Import meal controller
-import ordersController from '../controllers/orderController';
+//import ordersController from '../controllers/orderController';
 // Import menu controller
 import menuController from '../controllers/menuController';
 // Import user controller
 import userController from '../controllers/userController';
-
-import {
-  mealValidator,
-  verifyMealLength,
-  verifyMealNumber
-} from '../validations';
 import {
   validateSignin,
   validateSignup,
   validateUserLength
 } from '../validations/userValidation';
 import { authenticateUser, authenticateAdmin } from '../validations/authLogin';
+import { validateMeals, isNumber } from '../validations/mealValidation';
+import Validators from '../validations/menuValidation';
 
 const routes = (app) => {
   // default route
@@ -30,9 +26,9 @@ const routes = (app) => {
   app.post('/api/v1/auth/login', validateSignin, userController.loginUser);
 
   // get menu
-  // app.get('/api/v1/menu', authenticateUser, menuController.getMenu);
+  app.get('/api/v1/menu', authenticateUser, menuController.getMenu);
   // post order
-  app.post('/api/v1/orders', authenticateUser, ordersController.addOrder);
+  // app.post('/api/v1/orders', authenticateUser, ordersController.addOrder);
   // put order
   // app.put('/api/v1/orders/:id', authenticateUser, ordersController.updateOrder);
   // get order
@@ -41,12 +37,12 @@ const routes = (app) => {
   // get of all meals
   app.get('/api/v1/meals', mealsController.getAllMeals);
   // post meals
-  app.post('/api/v1/meals', mealValidator, verifyMealLength, verifyMealNumber, mealsController.addMeal);
+  app.post('/api/v1/meals', validateMeals, isNumber, mealsController.addMeal);
   // update meals
-  app.put('/api/v1/meals/:id', mealValidator, verifyMealLength, verifyMealNumber, mealsController.updateMeal);
+  app.put('/api/v1/meals/:id', isNumber, validateMeals, mealsController.updateMeal);
   // delete meals
   app.delete('/api/v1/meals/:id', mealsController.deleteMeal);
   // post menu
-  app.post('/api/v1/menu', menuController.addMenu);
+  app.post('/api/v1/menu', Validators.menuValidator, menuController.addMenu);
 };
 export default routes;

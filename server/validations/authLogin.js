@@ -20,20 +20,32 @@ const secretKey = process.env.JWT_SECRET;
    *
    * @return {null} - null
    */
-const authenticateUser = (req, res, next) => {
+export const authenticateUser = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
 
   try {
     const verifiedToken = jwt.verify(token, secretKey);
-    req.userId = verifiedToken.id;
-    return next();
+    req.decoded = verifiedToken;
+    User.findOne({
+      where: { id: req.decoded.id }
+    }).then((user) => {
+      if (!user) {
+        return res.status(400).send('no user found');
+      }
+      req.user = user;
+      next();
+    });
   } catch (error) {
-    return res.status(401).send({ message: 'you are not authorized to log in.' });
+    return res.status(403).json({
+      status: 'error',
+      message: 'access denied',
+      error
+    });
   }
 };
 
 
-const authenticateAdmin = (req, res, next) => {
+export const authenticateAdmin = (req, res, next) => {
   const token = req.headers['x-access-token'] || req.headers.token || req.query.token;
   try {
     const verifiedToken = jwt.verify(token, secretKey);
@@ -42,8 +54,7 @@ const authenticateAdmin = (req, res, next) => {
       where: { id: req.decoded.id }
     }).then((user) => {
       if (!user) {
-        res.status(400).send('no user');
-        return;
+        return res.status(400).send('no user');
       }
       req.user = user;
       const { role } = req.user;
@@ -53,9 +64,11 @@ const authenticateAdmin = (req, res, next) => {
       next();
     });
   } catch (error) {
-    return res.status(401).send({ message: 'you are not authorized to log in.' });
+    return res.status(403).json({
+      status: 'error',
+      message: 'access denied',
+      error
+    });
   }
 };
-
-module.exports = { authenticateUser, authenticateAdmin };
 
