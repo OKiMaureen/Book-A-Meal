@@ -1,5 +1,7 @@
 import pick from 'lodash.pick';
-import { Meal } from '../models';
+import db from '../models';
+
+const { Meal } = db;
 
 
 /**
@@ -21,11 +23,6 @@ export default class mealController {
    * @returns {object} Class instance
    */
   static addMeal(req, res) {
-    const { role } = req.user;
-    if (role !== 'admin') {
-      return res.status(401).send();
-    }
-
     const {
       category, name, price, image
     } = req.body;
@@ -59,7 +56,12 @@ export default class mealController {
                 meal: mealDetails
               });
           });
-      });
+      })
+      .catch(error => res.status(500).json({
+        status: 'error',
+        message: 'internal server error',
+        error
+      }));
   }
   /**
    * @description - get all meals
@@ -73,13 +75,16 @@ export default class mealController {
    * @returns {object} Class instance
    */
   static getAllMeals(req, res) {
-    const userRole = pick(req.user, ['role']);
-    if (userRole.role !== 'admin') {
-      return res.status(401).send();
-    }
     return Meal.findAll()
-      .then(foundMeal => res.status(200).send(foundMeal))
-      .catch(error => res.status(400).send(error));
+      .then(foundMeal => res.status(200).json({
+        status: true,
+        meal: foundMeal
+      }))
+      .catch(error => res.status(500).json({
+        status: 'error',
+        message: 'internal server error',
+        error
+      }));
   }
   /**
    * @description - Update a meal
@@ -93,10 +98,6 @@ export default class mealController {
    * @returns {object} Class instance
    */
   static updateMeal(req, res) {
-    const userRole = pick(req.user, ['role']);
-    if (userRole.role !== 'admin') {
-      return res.status(401).send();
-    }
     Meal.findOne({
       where: {
         name: req.body.name
@@ -106,8 +107,8 @@ export default class mealController {
         if (existingMeal) {
           return res.status(400)
             .json({
-              status: 'fail',
-              message: 'this meal already exists'
+              status: false,
+              message: 'The meal name already exists'
             });
         }
         return Meal.findOne({
@@ -118,7 +119,7 @@ export default class mealController {
           .then((foundMeal) => {
             if (!foundMeal) {
               res.status(404).json({
-                status: 'fail',
+                status: false,
                 message: `Meal id  ${req.params.id} not found`
               });
             }
@@ -133,12 +134,17 @@ export default class mealController {
             const mealDetails = pick(updatedMeal, ['category', 'name', 'price', 'image']);
             res.status(201)
               .json({
-                status: 'success',
+                status: true,
                 message: 'Meal updated successfully',
                 meal: mealDetails
               });
           });
-      });
+      })
+      .catch(error => res.status(500).json({
+        status: 'error',
+        message: 'internal server error',
+        error
+      }));
   }
   /**
  * @description - Delete an Meal
@@ -152,10 +158,6 @@ export default class mealController {
  * @returns {object} Class instance
  */
   static deleteMeal(req, res) {
-    const userRole = pick(req.user, ['role']);
-    if (userRole.role !== 'admin') {
-      return res.status(401).send();
-    }
     Meal.findOne({
       where: {
         id: req.params.id,
@@ -177,14 +179,15 @@ export default class mealController {
           })
             .then(() => res.status(200)
               .json({
-                status: 'success',
+                status: true,
                 message: `Meal with ${req.params.id} deleted`,
               }));
         }
       })
-      .catch(() => res.status(500).json({
+      .catch(error => res.status(500).json({
         status: 'error',
-        message: 'Internal server error'
+        message: 'internal server error',
+        error
       }));
   }
 }

@@ -33,6 +33,7 @@ export default class userController {
         email
       }
     }).then((existingEmail) => {
+      console.log('>>>>>>>>>>>', existingEmail);
       if (existingEmail) {
         return res.status(409)
           .json({

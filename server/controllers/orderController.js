@@ -1,5 +1,5 @@
-import moment from 'moment';
-import { Order, Meal } from '../models';
+// import moment from 'moment';
+// import { Order, Meal, Menu } from '../models';
 
 /**
  * class Order controls all order methods
@@ -13,20 +13,18 @@ export default class orderController {
    * @returns {json} adds new order
    * @memberof Order
    */
-  static addOrder(req, res) {
-    const {
-      mealId, quantity
-    } = req.body;
-    Menu.findOne()
-    Order.create({
-      mealId,
-      userId: req.userId
-    }).then((order) => {
-      order.addMeal(mealId);
-      return res.status(200).json({
-        status: true,
-        message: 'order added successfully'
-      });
-    });
-  }
+//   static addOrder(req, res) {
+//     const {
+//       mealId, quantity
+//     } = req.body;
+//     Menu.find({
+//       where: ({
+//         id: req.headers.id
+//       }),
+//       include: [{
+//         model: Meal
+//       }]
+//     }).then()
+//   }
+// }
 }
